@@ -1,5 +1,5 @@
-body {
-  /*background: #000000;*/
+.bodyHomepage {
+  background: #000000;
   background: linear-gradient(90deg, #0e0e0e 0%, #2e2e2e 50%);
   color: white;
   padding-inline: 25px;
@@ -13,4 +13,16 @@ body {
 
 .backgroundHp {
   background-color: #363636;
+}
+
+#verificato {
+  fill: var(--text-announcement, #0c67d3);
+}
+
+.bodyArtist {
+  color: white;
+  padding-inline: 25px;
+  padding-top: 10px;
+  background: #010101;
+  background: linear-gradient(180deg, #010101 15%, #464545 60%);
 }
