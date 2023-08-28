@@ -5,6 +5,7 @@ function collapseRight(event) {
   const sidebar = document.querySelector(".sidebarRight");
   console.log(sidebar);
   sidebar.classList.toggle("collapsed");
+  document.getElementById("main").classList.toggle("pSidebarright");
 }
 function expandRight(event) {
   document.querySelector(".internal").style.display = "flex";
@@ -12,6 +13,7 @@ function expandRight(event) {
   const sidebar = document.querySelector(".sidebarRight");
   console.log(sidebar);
   sidebar.classList.toggle("collapsed");
+  document.getElementById("main").classList.toggle("pSidebarright");
 }
 
 function collapseLeft(event) {
@@ -22,6 +24,7 @@ function collapseLeft(event) {
   document.querySelector(".sidebarLeft").classList.toggle("collapsed");
   document.querySelector(".expand-left").classList.toggle("d-none");
   document.querySelector(".collapse-left").classList.toggle("d-none");
+  document.getElementById("main").classList.toggle("pSidebarleft");
 }
 function expandLeft(event) {
   const disp = document.querySelector(".sidebarLeft").querySelectorAll("span");
@@ -31,4 +34,5 @@ function expandLeft(event) {
   document.querySelector(".expand-left").classList.toggle("d-none");
   document.querySelector(".collapse-left").classList.toggle("d-none");
   document.querySelector(".sidebarLeft").classList.toggle("collapsed");
+  document.getElementById("main").classList.toggle("pSidebarleft");
 }
