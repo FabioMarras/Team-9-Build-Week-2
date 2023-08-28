@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body>
+    <div class="sidebarLeft p-3">
+      <a class="expand-left d-none" onclick="expandLeft(event)"><i class="bi bi-arrows-angle-expand"></i></a>
+      <a onclick="collapseLeft(event)" class="collapse-left"><i class="bi bi-x-lg"></i></a>
+      <a href="#"><i class="bi bi-house-door-fill"></i> <span>Home</span></a>
+      <a href="#"><i class="bi bi-search"></i> <span>Search</span></a>
+      <a href="#"><i class="bi bi-stack"></i> <span>Your library</span></a
+      ><br />
+      <a href=""><i class="bi bi-plus-square-fill"></i> <span>Create playlist</span></a>
+      <a href=""><i class="bi bi-heart-fill"></i> <span>Your favorite songs</span></a>
+      <a href=""><i class="bi bi-bookmark"></i> <span>Your episodes</span></a>
+      <hr />
+      <div class="playlist"></div>
+    </div>
+    <div class="sidebarRight p-3">
+      <div class="expand-right" onclick="expandRight(event)" style="display: none">
+        <i class="bi bi-arrows-angle-expand"></i>
+      </div>
+      <div class="internal justify-content-between" style="display: flex">
+        <div>Friend activity</div>
+        <div>
+          <a href=""><i class="bi bi-person-add"></i></a>
+          <a class="collapse-right" onclick="collapseRight(event)"><i class="bi bi-x-lg"></i></a>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/javaScript/script.js"></script>
+  </body>
+</html>
