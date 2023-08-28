@@ -1,0 +1,51 @@
+body {
+  /*   background: rgb(2,0,36); */
+  background: linear-gradient(6deg, rgba(2,10,8,1) 50%, rgba(120,117,117,1) 100%); 
+    
+}
+
+#mainContainer {
+    padding-top: 100px;
+}
+
+#topImage {
+    height: 192px;
+    width: 192px; 
+    box-shadow: inset;
+} 
+
+h1{
+    font-size: 6rem; 
+    color: white;
+
+}  
+
+.albumText{
+    font-size: 0.875rem; 
+    color: white;
+}
+
+#artistProfileImage {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%; 
+}  
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+#playButton{
+    background-color: rgb(28, 190, 28); 
+    border-radius: 50%;
+   /* font-size: 1.5rem; */ 
+   height: 55px;
+   width: 55px;
+} 
+
+#musiclistBottom {
+    border-bottom: 1px solid;
+    border-color: white;
+    opacity: 1;
+}
