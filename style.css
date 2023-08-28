@@ -1,0 +1,16 @@
+body {
+  /*background: #000000;*/
+  background: linear-gradient(90deg, #0e0e0e 0%, #2e2e2e 50%);
+  color: white;
+  padding-inline: 25px;
+  padding-top: 10px;
+}
+
+#songDet {
+  background: #010101;
+  background: linear-gradient(90deg, #000000 0%, #494646 46%);
+}
+
+.backgroundHp {
+  background-color: #363636;
+}
