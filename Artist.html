@@ -15,18 +15,19 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
     <div class="sidebarLeft p-3">
       <a class="expand-left d-none" onclick="expandLeft(event)"><i class="bi bi-arrows-angle-expand"></i></a>
       <a onclick="collapseLeft(event)" class="collapse-left"><i class="bi bi-x-lg"></i></a>
       <a href="#"><i class="bi bi-house-door-fill"></i> <span>Home</span></a>
-      <a href="#"><i class="bi bi-search"></i> <span>Search</span></a>
+      <a href="#" onclick="appearSearch(event)"><i class="bi bi-search"></i> <span>Search</span></a>
       <a href="#"><i class="bi bi-stack"></i> <span>Your library</span></a
       ><br />
-      <a href=""><i class="bi bi-plus-square-fill"></i> <span>Create playlist</span></a>
-      <a href=""><i class="bi bi-heart-fill"></i> <span>Your favorite songs</span></a>
-      <a href=""><i class="bi bi-bookmark"></i> <span>Your episodes</span></a>
+      <a href="#"><i class="bi bi-plus-square-fill"></i> <span>Create playlist</span></a>
+      <a href="#"><i class="bi bi-heart-fill"></i> <span>Your favorite songs</span></a>
+      <a href="#"><i class="bi bi-bookmark"></i> <span>Your episodes</span></a>
       <hr />
       <div class="playlist"></div>
     </div>
@@ -44,126 +45,145 @@
       <div class="friendList"></div>
     </div>
     <main id="main" class="bodyArtist">
-      <div>
-        <div class="d-flex justify-content-between mb-3">
-          <div>
-            <a href="#">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="25"
-                fill="currentColor"
-                class="bi bi-arrow-left-circle-fill"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"
-                />
-              </svg>
-            </a>
-            <a href="#">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="25"
-                fill="currentColor"
-                class="bi bi-arrow-right-circle-fill"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"
-                />
-              </svg>
-            </a>
+      <div class="searchBar d-none">
+        <div class="d-inline">
+          <div class="input-group">
+            <span class="input-group-text bg-dark text-light" id="inputGroup-sizing-default"
+              ><i class="bi bi-search"></i
+            ></span>
+            <input
+              type="text"
+              class="form-control bg-dark text-light w-75"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+              placeholder="What do you wanna listen to?"
+            /><button class="btn btn-outline-secondary" type="button" id="button-addon1">Search</button>
           </div>
-          <div class="dropdown">
-            <button
-              class="btn btn-secondary dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
+        </div>
+        <div id="searchResults"></div>
+      </div>
+      <div class="mainPage">
+        <div>
+          <div class="d-flex justify-content-between mb-3">
+            <div>
+              <a href="#">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-arrow-left-circle-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"
+                  />
+                </svg>
+              </a>
+              <a href="#">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-arrow-right-circle-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"
+                  />
+                </svg>
+              </a>
+            </div>
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img src="./assets/imgs/avatar.png" alt="Avatar" width="25px" />
+                Fabio Marras
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Bilgen Remzi</a></li>
+              </ul>
+            </div>
+          </div>
+          <!--  -->
+          <div class="mt-5">
+            <svg
+              role="img"
+              height="24"
+              width="24"
+              aria-hidden="true"
+              class="Svg-sc-ytk21e-0 esyykA b0NcxAbHvRbqgs2S8QDg"
+              viewBox="0 0 24 24"
+              data-encore-id="icon"
             >
-              <img src="./assets/imgs/avatar.png" alt="Avatar" width="25px" />
-              Fabio Marras
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Bilgen Remzi</a></li>
-            </ul>
+              <path
+                id="verificato"
+                d="M10.814.5a1.658 1.658 0 0 1 2.372 0l2.512 2.572 3.595-.043a1.658 1.658 0 0 1 1.678 1.678l-.043 3.595 2.572 2.512c.667.65.667 1.722 0 2.372l-2.572 2.512.043 3.595a1.658 1.658 0 0 1-1.678 1.678l-3.595-.043-2.512 2.572a1.658 1.658 0 0 1-2.372 0l-2.512-2.572-3.595.043a1.658 1.658 0 0 1-1.678-1.678l.043-3.595L.5 13.186a1.658 1.658 0 0 1 0-2.372l2.572-2.512-.043-3.595a1.658 1.658 0 0 1 1.678-1.678l3.595.043L10.814.5zm6.584 9.12a1 1 0 0 0-1.414-1.413l-6.011 6.01-1.894-1.893a1 1 0 0 0-1.414 1.414l3.308 3.308 7.425-7.425z"
+              ></path>
+            </svg>
+            Artista verificato
           </div>
+          <h1>Yellowcard</h1>
+          <p class="mt-4">3.433.158 ascoltatori mensili</p>
         </div>
         <!--  -->
         <div class="mt-5">
-          <svg
-            role="img"
-            height="24"
-            width="24"
-            aria-hidden="true"
-            class="Svg-sc-ytk21e-0 esyykA b0NcxAbHvRbqgs2S8QDg"
-            viewBox="0 0 24 24"
-            data-encore-id="icon"
-          >
-            <path
-              id="verificato"
-              d="M10.814.5a1.658 1.658 0 0 1 2.372 0l2.512 2.572 3.595-.043a1.658 1.658 0 0 1 1.678 1.678l-.043 3.595 2.572 2.512c.667.65.667 1.722 0 2.372l-2.572 2.512.043 3.595a1.658 1.658 0 0 1-1.678 1.678l-3.595-.043-2.512 2.572a1.658 1.658 0 0 1-2.372 0l-2.512-2.572-3.595.043a1.658 1.658 0 0 1-1.678-1.678l.043-3.595L.5 13.186a1.658 1.658 0 0 1 0-2.372l2.572-2.512-.043-3.595a1.658 1.658 0 0 1 1.678-1.678l3.595.043L10.814.5zm6.584 9.12a1 1 0 0 0-1.414-1.413l-6.011 6.01-1.894-1.893a1 1 0 0 0-1.414 1.414l3.308 3.308 7.425-7.425z"
-            ></path>
-          </svg>
-          Artista verificato
-        </div>
-        <h1>Yellowcard</h1>
-        <p class="mt-4">3.433.158 ascoltatori mensili</p>
-      </div>
-      <!--  -->
-      <div class="mt-5">
-        <div class="d-flex">
-          <svg
-            role="img"
-            height="28"
-            width="28"
-            aria-hidden="true"
-            viewBox="0 0 24 24"
-            data-encore-id="icon"
-            class="Svg-sc-ytk21e-0 haNxPq"
-          >
-            <path
-              d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"
-            ></path>
-          </svg>
-          <button type="button" class="btn btn-outline-light mx-3">FOLLOWING</button>
-          <a href=""><i class="bi bi-three-dots fs-3 text-light"></i></a>
-        </div>
-      </div>
-      <div class="d-flex mt-4">
-        <div>
-          <h3 class="mb-4">Popolari</h3>
           <div class="d-flex">
-            <span class="mx-3 align-self-center">1</span>
-            <img class="mx-2" src="./assets/imgs/main/image-1.jpg" alt="" width="50px" />
-            <p class="me-3 align-self-center">Ocean Avenue</p>
-            <p class="ms-5 align-self-center">250.365.366</p>
-            <p class="ms-5 align-self-center">3:18</p>
-          </div>
-          <div class="d-flex mt-3">
-            <span class="mx-3 align-self-center">1</span>
-            <img class="mx-2" src="./assets/imgs/main/image-1.jpg" alt="" width="50px" />
-            <p class="me-3 align-self-center">Ocean Avenue</p>
-            <p class="ms-5 align-self-center">250.365.366</p>
-            <p class="ms-5 align-self-center">3:18</p>
-          </div>
-          <div class="d-flex mt-3">
-            <span class="mx-3 align-self-center">1</span>
-            <img class="mx-2" src="./assets/imgs/main/image-1.jpg" alt="" width="50px" />
-            <p class="me-3 align-self-center">Ocean Avenue</p>
-            <p class="ms-5 align-self-center">250.365.366</p>
-            <p class="ms-5 align-self-center">3:18</p>
+            <svg
+              role="img"
+              height="28"
+              width="28"
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              data-encore-id="icon"
+              class="Svg-sc-ytk21e-0 haNxPq"
+            >
+              <path
+                d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"
+              ></path>
+            </svg>
+            <button type="button" class="btn btn-outline-light mx-3">FOLLOWING</button>
+            <a href=""><i class="bi bi-three-dots fs-3 text-light"></i></a>
           </div>
         </div>
-        <div class="ms-5">
-          <h3 class="mb-4">Brani che ti piacciono</h3>
-          <div class="d-flex">
-            <img class="rounded-circle" src="./assets/imgs/main/image-1.jpg" alt="" width="80px" />
-            <div class="ms-3">
-              <p>Hai messo Mi piace a 11 brani</p>
-              <span class="opacity-50">Di Yellowcard</span>
+        <div class="d-flex mt-4">
+          <div>
+            <h3 class="mb-4">Popolari</h3>
+            <div class="d-flex">
+              <span class="mx-3 align-self-center">1</span>
+              <img class="mx-2" src="./assets/imgs/main/image-1.jpg" alt="" width="50px" />
+              <p class="me-3 align-self-center">Ocean Avenue</p>
+              <p class="ms-5 align-self-center">250.365.366</p>
+              <p class="ms-5 align-self-center">3:18</p>
+            </div>
+            <div class="d-flex mt-3">
+              <span class="mx-3 align-self-center">1</span>
+              <img class="mx-2" src="./assets/imgs/main/image-1.jpg" alt="" width="50px" />
+              <p class="me-3 align-self-center">Ocean Avenue</p>
+              <p class="ms-5 align-self-center">250.365.366</p>
+              <p class="ms-5 align-self-center">3:18</p>
+            </div>
+            <div class="d-flex mt-3">
+              <span class="mx-3 align-self-center">1</span>
+              <img class="mx-2" src="./assets/imgs/main/image-1.jpg" alt="" width="50px" />
+              <p class="me-3 align-self-center">Ocean Avenue</p>
+              <p class="ms-5 align-self-center">250.365.366</p>
+              <p class="ms-5 align-self-center">3:18</p>
+            </div>
+          </div>
+          <div class="ms-5">
+            <h3 class="mb-4">Brani che ti piacciono</h3>
+            <div class="d-flex">
+              <img class="rounded-circle" src="./assets/imgs/main/image-1.jpg" alt="" width="80px" />
+              <div class="ms-3">
+                <p>Hai messo Mi piace a 11 brani</p>
+                <span class="opacity-50">Di Yellowcard</span>
+              </div>
             </div>
           </div>
         </div>
@@ -201,5 +221,6 @@
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
+    <script src="assets/javaScript/script.js"></script>
   </body>
 </html>

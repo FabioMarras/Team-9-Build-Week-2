@@ -28,7 +28,7 @@
       <a class="expand-left d-none" onclick="expandLeft(event)"><i class="bi bi-arrows-angle-expand"></i></a>
       <a onclick="collapseLeft(event)" class="collapse-left"><i class="bi bi-x-lg"></i></a>
       <a href="#"><i class="bi bi-house-door-fill"></i> <span>Home</span></a>
-      <a href="#"><i class="bi bi-search"></i> <span>Search</span></a>
+      <a href="#" onclick="appearSearch(event)"><i class="bi bi-search"></i> <span>Search</span></a>
       <a href="#"><i class="bi bi-stack"></i> <span>Your library</span></a
       ><br />
       <a href=""><i class="bi bi-plus-square-fill"></i> <span>Create playlist</span></a>
@@ -48,86 +48,106 @@
           <a class="collapse-right" onclick="collapseRight(event)"><i class="bi bi-x-lg"></i></a>
         </div>
       </div>
+      <div class="friendList"></div>
     </div>
     <main id="main">
-      <div class="d-flex" id="mainContainer">
-        <div class="container d-flex">
-          <div class="row">
-            <div class="col me-5">
-              <img class="" src="image.jpg" alt="gioventù-brucata" id="topImage" />
+      <div class="searchBar d-none">
+        <div class="d-inline">
+          <div class="input-group">
+            <span class="input-group-text bg-dark text-light" id="inputGroup-sizing-default"
+              ><i class="bi bi-search"></i
+            ></span>
+            <input
+              type="text"
+              class="form-control bg-dark text-light w-75"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+              placeholder="What do you wanna listen to?"
+            /><button class="btn btn-outline-secondary" type="button" id="button-addon1">Search</button>
+          </div>
+        </div>
+        <div id="searchResults"></div>
+      </div>
+      <div class="mainPage">
+        <div class="d-flex" id="mainContainer">
+          <div class="container d-flex">
+            <div class="row">
+              <div class="col me-5">
+                <img class="" src="image.jpg" alt="gioventù-brucata" id="topImage" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="col d-flex flex-column">
-        <span class="albumText">Album</span>
-        <span
-          ><h1><strong>Gioventù brucata</strong></h1></span
-        >
-        <div class="d-flex">
-          <figure>
-            <img src="image2.jpg" alt="" id="artistProfileImage" />
-          </figure>
-          <a href="#" id="link1"
-            ><span class="ms-2"><strong>Pinguini Tattici Nucleari</strong></span></a
+        <div class="col d-flex flex-column">
+          <span class="albumText">Album</span>
+          <span
+            ><h1><strong>Gioventù brucata</strong></h1></span
           >
+          <div class="d-flex">
+            <figure>
+              <img src="image2.jpg" alt="" id="artistProfileImage" />
+            </figure>
+            <a href="#" id="link1"
+              ><span class="ms-2"><strong>Pinguini Tattici Nucleari</strong></span></a
+            >
 
-          <span class="text-light">•</span><span class="text-light">2017</span><span class="text-light">•</span>
-          <span class="text-light">12 brani,</span><span class="text-tertiary">53 min 20 sec.</span>
+            <span class="text-light">•</span><span class="text-light">2017</span><span class="text-light">•</span>
+            <span class="text-light">12 brani,</span><span class="text-tertiary">53 min 20 sec.</span>
+          </div>
         </div>
-      </div>
-      <div class="container mt-5 mb-3">
-        <div class="row">
-          <div class="col d-flex">
-            <button class="border-0" id="playButton">
-              <i class="bi bi-play-fill fs-2" id="playIcon"></i>
-            </button>
-            <div class="ms-5 align-self-center">
-              <a href="#" class="border-0 mx-2">
-                <i class="bi bi-suit-heart bg-0 fs-3 text-light"></i>
-              </a>
-              <a href="#" class="border-0 mx-2 text-light">
-                <span>
-                  <i class="bi bi-arrow-down-circle fs-3"></i>
-                </span>
-              </a>
-              <a href="#" class="border-0 mx-2">
-                <span class="">
-                  <i class="bi bi-three-dots fs-3 text-light"></i>
-                </span>
-              </a>
+        <div class="container mt-5 mb-3">
+          <div class="row">
+            <div class="col d-flex">
+              <button class="border-0" id="playButton">
+                <i class="bi bi-play-fill fs-2" id="playIcon"></i>
+              </button>
+              <div class="ms-5 align-self-center">
+                <a href="#" class="border-0 mx-2">
+                  <i class="bi bi-suit-heart bg-0 fs-3 text-light"></i>
+                </a>
+                <a href="#" class="border-0 mx-2 text-light">
+                  <span>
+                    <i class="bi bi-arrow-down-circle fs-3"></i>
+                  </span>
+                </a>
+                <a href="#" class="border-0 mx-2">
+                  <span class="">
+                    <i class="bi bi-three-dots fs-3 text-light"></i>
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="container mt-5" id="musicList">
-        <div class="row text-center mb-3 justify-content-between">
-          <div class="col-1">
-            <span class="text-light">#</span>
-          </div>
-          <div class="col-6 text-start">
-            <span class="text-light">Titolo</span>
-          </div>
-          <div class="col-4 text-start">
-            <span class="text-light">Riproduzioni</span>
-          </div>
-          <div class="col-1">
-            <span class="text-light"><i class="bi bi-clock"></i></span>
-          </div>
-        </div>
-        <div class="" id="musiclistBottom">
+        <div class="container mt-5" id="musicList">
           <div class="row text-center mb-3 justify-content-between">
             <div class="col-1">
-              <span class="text-light">1</span>
+              <span class="text-light">#</span>
             </div>
-            <div class="col-6">
-              <div class="row text-light">Montanelli - Intro</div>
-              <div class="row text-white-50">Pinguini</div>
+            <div class="col-6 text-start">
+              <span class="text-light">Titolo</span>
             </div>
-            <div class="col-4 text-start text-white-50">694,578</div>
+            <div class="col-4 text-start">
+              <span class="text-light">Riproduzioni</span>
+            </div>
             <div class="col-1">
-              <span class="text-white-50">1:28</span>
+              <span class="text-light"><i class="bi bi-clock"></i></span>
+            </div>
+          </div>
+          <div class="" id="musiclistBottom">
+            <div class="row text-center mb-3 justify-content-between">
+              <div class="col-1">
+                <span class="text-light">1</span>
+              </div>
+              <div class="col-6">
+                <div class="row text-light">Montanelli - Intro</div>
+                <div class="row text-white-50">Pinguini</div>
+              </div>
+              <div class="col-4 text-start text-white-50">694,578</div>
+              <div class="col-1">
+                <span class="text-white-50">1:28</span>
+              </div>
             </div>
           </div>
         </div>

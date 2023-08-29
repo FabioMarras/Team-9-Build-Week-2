@@ -2,8 +2,6 @@
   background: #000000;
   background: linear-gradient(90deg, #0e0e0e 0%, #2e2e2e 50%);
   color: white;
-  padding-inline: 25px;
-  padding-top: 10px;
 }
 
 #songDet {
@@ -21,60 +19,56 @@
 
 .bodyArtist {
   color: white;
-  padding-inline: 25px;
-  padding-top: 10px;
   background: #010101;
   background: linear-gradient(180deg, #010101 15%, #464545 60%);
 }
 
 body {
   /*   background: rgb(2,0,36); */
-  background: linear-gradient(6deg, rgba(2,10,8,1) 50%, rgba(120,117,117,1) 100%); 
-    
+  background: linear-gradient(6deg, rgba(2, 10, 8, 1) 50%, rgba(120, 117, 117, 1) 100%);
 }
 
 #mainContainer {
-    padding-top: 100px;
+  padding-top: 100px;
 }
 
 #topImage {
-    height: 192px;
-    width: 192px; 
-    box-shadow: inset;
-} 
+  height: 192px;
+  width: 192px;
+  box-shadow: inset;
+}
 
-h1{
-    font-size: 6rem; 
-    color: white;
+h1 {
+  font-size: 6rem;
+  color: white;
+}
 
-}  
-
-.albumText{
-    font-size: 0.875rem; 
-    color: white;
+.albumText {
+  font-size: 0.875rem;
+  color: white;
 }
 
 #artistProfileImage {
-    height: 24px;
-    width: 24px;
-    border-radius: 50%; 
-}  
-
-a {
-    color: white;
-    text-decoration: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
 }
 
-#playButton{
-    background-color: rgb(28, 190, 28); 
-    border-radius: 50%;
-   /* font-size: 1.5rem; */ 
-   height: 55px;
-   width: 55px;
-} 
+a {
+  color: white;
+  text-decoration: none;
+}
+
+#playButton {
+  background-color: rgb(28, 190, 28);
+  border-radius: 50%;
+  /* font-size: 1.5rem; */
+  height: 55px;
+  width: 55px;
+}
 
 #musiclistBottom {
-    border-bottom: 1px solid;
-    border-color: white;
-    opacity: 1;
+  border-bottom: 1px solid;
+  border-color: white;
+  opacity: 1;
 }

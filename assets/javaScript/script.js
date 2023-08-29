@@ -36,3 +36,11 @@ function expandLeft(event) {
   document.querySelector(".sidebarLeft").classList.toggle("collapsed");
   document.getElementById("main").classList.toggle("pSidebarleft");
 }
+function appearSearch(event) {
+  document.querySelector(".searchBar").classList.toggle("d-none");
+  document.querySelector(".mainPage").classList.toggle("d-none");
+}
+
+function search() {
+  fetch();
+}
