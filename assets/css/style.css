@@ -61,7 +61,7 @@ main {
   color: white;
   padding-top: 20px;
   padding-bottom: 150px;
-  overflow: scroll;
+  overflow: auto;
   height: 100vh;
 }
 
@@ -121,6 +121,9 @@ footer img {
 }
 .text-light::placeholder {
   color: gray;
+}
+.albumTitle {
+  font-size: 4rem;
 }
 
 @media screen and (max-width: 1200px) {

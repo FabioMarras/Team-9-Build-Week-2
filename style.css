@@ -33,8 +33,7 @@ body {
 }
 
 #topImage {
-  height: 192px;
-  width: 192px;
+  height: 100%;
   box-shadow: inset;
 }
 
