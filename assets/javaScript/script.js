@@ -75,12 +75,12 @@ function artistPage() {
         const listPopolar = document.createElement("div");
         listPopolar.className = "d-flex mt-3";
         listPopolar.innerHTML = `
-        <div class="d-flex mt-3">
-        <span class="mx-3 align-self-center">${i + 1}</span>
-        <img class="mx-2" src="${obj.data[i].album.cover}" alt="" width="50px" />
-        <p class="me-3 align-self-center">${obj.data[i].title}</p>
-        <p class="ms-5 align-self-center">${obj.data[i].rank}</p>
-        <p class="ms-5 align-self-center">${obj.data[i].duration}</p>
+        <div class="d-flex mt-3" style="width: 100%;">
+        <span class="mx-3 align-self-center" style="width: 2%;">${i + 1}</span>
+        <img class="mx-2" src="${obj.data[i].album.cover}" alt="" width="50px" style="width: 12%;"/>
+        <p class="me-3 align-self-center" style="width: 25%;">${obj.data[i].title}</p>
+        <p class="ms-5 align-self-center" style="width: 15%;">Views ${obj.data[i].rank}</p>
+        <p class="ms-5 align-self-center" style="width: 10%;">Time ${(obj.data[i].duration / 60).toFixed(2)}</p>
         </div>
         `;
         songListPopolar.appendChild(listPopolar);
