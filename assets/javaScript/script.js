@@ -45,8 +45,9 @@ function search() {
   fetch();
 }
 const urlAlbum = "https://deezerdevs-deezer.p.rapidapi.com/album/";
+const generalAPI = "https://striveschool-api.herokuapp.com/api/deezer/search?q={query}";
 
-window.onload = function () {
+function artistPage() {
   const url = "https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem";
   const options = {
     method: "GET",
@@ -100,5 +101,11 @@ window.onload = function () {
           const trackList = obj.tracks.data;
           console.log(trackList);
         });
+      fetch(generalAPI)
+        .then((responseObj) => responseObj.json())
+        .then((objGeneral) => {
+          const generalA = objGeneral.data;
+          console.log(generalA);
+        });
     });
-};
+}
