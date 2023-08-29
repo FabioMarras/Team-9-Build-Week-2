@@ -56,11 +56,20 @@ function album() {
   fetch(urlAlbum + albumId, options)
     .then((responseObj) => responseObj.json())
     .then((obj) => {
+      const albumTime = obj.duration;
+      const albumMinutes = Math.floor(albumTime / 60);
+      const albumSeconds = Math.floor(albumTime - Math.floor(albumTime / 60) * 60)
+        .toString()
+        .padStart(2, "0");
+
+      const albumDuration = albumMinutes + ":" + albumSeconds;
       const div = document.getElementById("musicList");
       document.getElementById("topImage").src = `${obj.cover}`;
       document.querySelector(".albumTitle").innerHTML = `${obj.title}`;
       document.querySelector(".albumArtist").innerHTML = `${obj.artist.name}`;
       document.querySelector("#artistProfileImage").src = `${obj.artist.picture}`;
+      document.querySelector(".releaseDate").innerHTML = `${obj.release_date}`;
+      document.querySelector(".albumDuration").innerHTML = `${albumDuration}`;
 
       const mList = document.getElementById("musicList");
       const trackList = obj.tracks.data;
@@ -71,6 +80,13 @@ function album() {
         row.classList.add("text-center");
         row.classList.add("mb-3");
         row.classList.add("justify-content-between");
+        const time = obj.duration;
+        const minutes = Math.floor(time / 60);
+        const seconds = Math.floor(time - Math.floor(time / 60) * 60)
+          .toString()
+          .padStart(2, "0");
+
+        const duration = minutes + ":" + seconds;
 
         row.innerHTML = `<div class="col-1">
             <span class="text-light">${i}</span>
@@ -81,7 +97,7 @@ function album() {
           </div>
           <div class="col-2 text-end text-white-50">${obj.rank}</div>
           <div class="col-3 text-end">
-            <span class="text-white-50">${(obj.duration / 60).toFixed(2)}</span>
+            <span class="text-white-50">${duration}</span>
           </div>`;
         mList.append(row);
         i++;
