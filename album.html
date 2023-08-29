@@ -70,30 +70,27 @@
       </div>
       <div class="mainPage">
         <div class="d-flex" id="mainContainer">
-          <div class="container d-flex">
+          <div class="container">
             <div class="row">
-              <div class="col me-5">
-                <img class="" src="image.jpg" alt="gioventù-brucata" id="topImage" />
+              <div class="col-3">
+                <img class="" src="" alt="gioventù-brucata" id="topImage" />
+              </div>
+
+              <div class="col-9">
+                <span class="albumText">Album</span>
+                <span><p class="albumTitle row fw-bold ps-2">Gioventù brucata</p></span>
+                <div class="d-flex">
+                  <figure>
+                    <img src="image2.jpg" alt="" id="artistProfileImage" />
+                  </figure>
+                  <a href="#" id="link1"><span class="ms-2 fw-bold albumArtist">Pinguini Tattici Nucleari</span></a>
+
+                  <span class="text-light">•</span><span class="text-light">2017</span
+                  ><span class="text-light">•</span> <span class="text-light">12 brani,</span
+                  ><span class="text-tertiary">53 min 20 sec.</span>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div class="col d-flex flex-column">
-          <span class="albumText">Album</span>
-          <span
-            ><h1 class="row"><strong>Gioventù brucata</strong></h1></span
-          >
-          <div class="d-flex">
-            <figure>
-              <img src="image2.jpg" alt="" id="artistProfileImage" />
-            </figure>
-            <a href="#" id="link1"
-              ><span class="ms-2"><strong>Pinguini Tattici Nucleari</strong></span></a
-            >
-
-            <span class="text-light">•</span><span class="text-light">2017</span><span class="text-light">•</span>
-            <span class="text-light">12 brani,</span><span class="text-tertiary">53 min 20 sec.</span>
           </div>
         </div>
         <div class="container mt-5 mb-3">
@@ -120,7 +117,7 @@
             </div>
           </div>
         </div>
-        <div class="container mt-5" id="musicList">
+        <div class="container mt-5">
           <div class="row text-center mb-3 justify-content-between" id="musiclistBottom">
             <div class="col-1">
               <span class="text-light">#</span>
@@ -128,28 +125,14 @@
             <div class="col-6 text-start">
               <span class="text-light">Titolo</span>
             </div>
-            <div class="col-4 text-start">
+            <div class="col-3 text-center">
               <span class="text-light">Riproduzioni</span>
             </div>
-            <div class="col-1">
+            <div class="col-2 text-end">
               <span class="text-light"><i class="bi bi-clock"></i></span>
             </div>
           </div>
-          <div class="">
-            <div class="row text-center mb-3 justify-content-between">
-              <div class="col-1">
-                <span class="text-light">1</span>
-              </div>
-              <div class="col-6">
-                <div class="row text-light">Montanelli - Intro</div>
-                <div class="row text-white-50">Pinguini</div>
-              </div>
-              <div class="col-4 text-start text-white-50">694,578</div>
-              <div class="col-1">
-                <span class="text-white-50">1:28</span>
-              </div>
-            </div>
-          </div>
+          <div id="musicList"></div>
         </div>
       </div>
     </main>
@@ -188,5 +171,8 @@
       crossorigin="anonymous"
     ></script>
     <script src="assets/javaScript/script.js"></script>
+    <script>
+      window.onload = album();
+    </script>
   </body>
 </html>

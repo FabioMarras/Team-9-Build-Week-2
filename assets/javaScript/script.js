@@ -3,7 +3,6 @@ function collapseRight(event) {
   int.style.display = "none";
   document.querySelector(".expand-right").style.display = "block";
   const sidebar = document.querySelector(".sidebarRight");
-  console.log(sidebar);
   sidebar.classList.toggle("collapsed");
   document.getElementById("main").classList.toggle("pSidebarright");
 }
@@ -11,7 +10,6 @@ function expandRight(event) {
   document.querySelector(".internal").style.display = "flex";
   document.querySelector(".expand-right").style.display = "none";
   const sidebar = document.querySelector(".sidebarRight");
-  console.log(sidebar);
   sidebar.classList.toggle("collapsed");
   document.getElementById("main").classList.toggle("pSidebarright");
 }
@@ -45,8 +43,8 @@ function search() {
   fetch();
 }
 const urlAlbum = "https://deezerdevs-deezer.p.rapidapi.com/album/";
-
-window.onload = function () {
+function album() {
+  console.log("hello");
   const url = "https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem";
   const options = {
     method: "GET",
@@ -61,11 +59,38 @@ window.onload = function () {
       const albumid = obj.data[0].album.id;
       console.log(albumid);
       const div = document.getElementById("musicList");
+      document.getElementById("topImage").src = `${obj.data[0].album.cover}`;
+      document.querySelector(".albumTitle").innerHTML = `${obj.data[0].album.title}`;
+      document.querySelector(".albumArtist").innerHTML = `${obj.data[0].artist.name}`;
+      document.querySelector("#artistProfileImage").src = `${obj.data[0].artist.picture}`;
       fetch(urlAlbum + albumid, options)
         .then((responseObj) => responseObj.json())
         .then((obj) => {
+          const mList = document.getElementById("musicList");
           const trackList = obj.tracks.data;
           console.log(trackList);
+          let i = 1;
+          trackList.forEach((obj) => {
+            const row = document.createElement("div");
+            row.classList.add("row");
+            row.classList.add("text-center");
+            row.classList.add("mb-3");
+            row.classList.add("justify-content-between");
+
+            row.innerHTML = `<div class="col-1">
+            <span class="text-light">${i}</span>
+          </div>
+          <div class="col-6">
+            <div class="row text-light">${obj.title}</div>
+            <div class="row text-white-50">${obj.artist.name}</div>
+          </div>
+          <div class="col-2 text-end text-white-50">${obj.rank}</div>
+          <div class="col-3 text-end">
+            <span class="text-white-50">${(obj.duration / 60).toFixed(2)}</span>
+          </div>`;
+            mList.append(row);
+            i++;
+          });
         });
     });
-};
+}

@@ -122,6 +122,9 @@ footer img {
 .text-light::placeholder {
   color: gray;
 }
+.albumTitle {
+  font-size: 4rem;
+}
 
 @media screen and (max-width: 1200px) {
   .sidebarLeft {
