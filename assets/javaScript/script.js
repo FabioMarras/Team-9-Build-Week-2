@@ -44,70 +44,28 @@ function appearSearch(event) {
 function search() {
   fetch();
 }
+const urlAlbum = "https://deezerdevs-deezer.p.rapidapi.com/album/";
 
-const URL = "https://striveschool-api.herokuapp.com/api/deezer/search?q={query}";
-const URL2 = "https://striveschool-api.herokuapp.com/api/deezer/search?q={query}";
-window.onload = async () => {
-  try {
-    const resp = await fetch(URL, {
-      method: "GET",
-      headers: {
-        Authorization: "",
-      },
+window.onload = function () {
+  const url = "https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem";
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": "c47f8709a8msh68fc06fa8886e81p18e74djsn87e3ff301cd9",
+      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+    },
+  };
+  fetch(url, options)
+    .then((responseObj) => responseObj.json())
+    .then((obj) => {
+      const albumid = obj.data[0].album.id;
+      console.log(albumid);
+      const div = document.getElementById("musicList");
+      fetch(urlAlbum + albumid, options)
+        .then((responseObj) => responseObj.json())
+        .then((obj) => {
+          const trackList = obj.tracks.data;
+          console.log(trackList);
+        });
     });
-    if (resp.ok) {
-      const responseData = await resp.json();
-      console.log("responde data: ", responseData);
-
-      try {
-    const resp = await fetch(URL, {
-      method: "GET",
-      headers: {
-        Authorization: "",
-      },
-    });
-    if (resp.ok) {
-      const responseData = await resp.json();
-      console.log("responde data: ", responseData);
-
-      const row = document.getElementById("row");
-      const trackList = fetch(responseData.data[0].album.tracklist);
-
-      console.log(trackList);
-
-      trackList.data.forEach((data) => {
-        console.log(data);
-        /*const col = document.createElement("div");
-        col.innerHTML = `
-        <p> ${data.album.title} </p>
-        `;
-        console.log(data.album.title);
-
-        row.appendChild(col);*/
-        const song1 = document.getElementById("titleSong");
-        const titleSongAlbum = document.createElement("div");
-        titleSongAlbum.innerHTML = `
-        <div class="row text-center mb-3 justify-content-between">
-            <div class="col-1">
-              <span class="text-light">1</span>
-            </div>
-            <div class="col-6" id="titleSong">
-              <div class="row text-light">${data.title}</div>
-              <div class="row text-white-50">Pinguini</div>
-            </div>
-            <div class="col-4 text-start text-white-50">694,578</div>
-            <div class="col-1">
-              <span class="text-white-50">1:28</span>
-            </div>
-          </div>
-        <div class="row text-light">${data.album.tracklist}</div>
-          `;
-        song1.appendChild(titleSongAlbum);
-      });
-    } else {
-      console.error("Errore nella richiesta:", resp.status);
-    }
-  } catch (error) {
-    console.error("Errore durante la richiesta:", error);
-  }
 };
