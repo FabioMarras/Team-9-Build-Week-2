@@ -44,3 +44,35 @@ function appearSearch(event) {
 function search() {
   fetch();
 }
+
+const URL = "https://striveschool-api.herokuapp.com/api/deezer/search?q={query}";
+window.onload = async () => {
+  try {
+    const resp = await fetch(URL, {
+      method: "GET",
+      headers: {
+        Authorization: "",
+      },
+    });
+    if (resp.ok) {
+      const responseData = await resp.json();
+      console.log("responde data: ", responseData);
+
+      /*const row = document.getElementById("row");
+
+      responseData.data.forEach((data) => {
+        const col = document.createElement("div");
+        col.innerHTML = `
+        <p> ${data.album.title} </p>
+        `;
+        console.log(data.album.title);
+
+        row.appendChild(col);
+      });*/
+    } else {
+      console.error("Errore nella richiesta:", resp.status);
+    }
+  } catch (error) {
+    console.error("Errore durante la richiesta:", error);
+  }
+};
