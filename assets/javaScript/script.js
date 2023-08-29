@@ -56,24 +56,25 @@ function album() {
   fetch(urlAlbum + albumId, options)
     .then((responseObj) => responseObj.json())
     .then((obj) => {
+      const mList = document.getElementById("musicList");
+      const trackList = obj.tracks.data;
+      let i = 1;
       const albumTime = obj.duration;
       const albumMinutes = Math.floor(albumTime / 60);
       const albumSeconds = Math.floor(albumTime - Math.floor(albumTime / 60) * 60)
         .toString()
         .padStart(2, "0");
-
-      const albumDuration = albumMinutes + ":" + albumSeconds;
       const div = document.getElementById("musicList");
       document.getElementById("topImage").src = `${obj.cover}`;
       document.querySelector(".albumTitle").innerHTML = `${obj.title}`;
       document.querySelector(".albumArtist").innerHTML = `${obj.artist.name}`;
       document.querySelector("#artistProfileImage").src = `${obj.artist.picture}`;
       document.querySelector(".releaseDate").innerHTML = `${obj.release_date}`;
-      document.querySelector(".albumDuration").innerHTML = `${albumDuration}`;
+      document.querySelector(".albumDuration").innerHTML = `${
+        " " + albumMinutes + " minutes " + albumSeconds + " seconds"
+      }`;
+      document.querySelector(".nBrani").innerHTML = `${" " + trackList.length + " Brani " + " , "}`;
 
-      const mList = document.getElementById("musicList");
-      const trackList = obj.tracks.data;
-      let i = 1;
       trackList.forEach((obj) => {
         const row = document.createElement("div");
         row.classList.add("row");
