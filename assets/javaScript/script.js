@@ -42,43 +42,37 @@ function appearSearch(event) {
 function search() {
   fetch();
 }
+const options = {
+  method: "GET",
+  headers: {
+    "X-RapidAPI-Key": "c47f8709a8msh68fc06fa8886e81p18e74djsn87e3ff301cd9",
+    "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+  },
+};
 const urlAlbum = "https://deezerdevs-deezer.p.rapidapi.com/album/";
-
+const albumId = 103248;
+const url = "https://deezerdevs-deezer.p.rapidapi.com/search?q=103248";
 function album() {
-  console.log("hello");
-  const url = "https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem";
-  const options = {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key": "c47f8709a8msh68fc06fa8886e81p18e74djsn87e3ff301cd9",
-      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-    },
-  };
-  fetch(url, options)
+  fetch(urlAlbum + albumId, options)
     .then((responseObj) => responseObj.json())
     .then((obj) => {
-      const albumid = obj.data[0].album.id;
-      console.log(albumid);
       const div = document.getElementById("musicList");
-      document.getElementById("topImage").src = `${obj.data[0].album.cover}`;
-      document.querySelector(".albumTitle").innerHTML = `${obj.data[0].album.title}`;
-      document.querySelector(".albumArtist").innerHTML = `${obj.data[0].artist.name}`;
-      document.querySelector("#artistProfileImage").src = `${obj.data[0].artist.picture}`;
-      fetch(urlAlbum + albumid, options)
-        .then((responseObj) => responseObj.json())
-        .then((obj) => {
-          const mList = document.getElementById("musicList");
-          const trackList = obj.tracks.data;
-          console.log(trackList);
-          let i = 1;
-          trackList.forEach((obj) => {
-            const row = document.createElement("div");
-            row.classList.add("row");
-            row.classList.add("text-center");
-            row.classList.add("mb-3");
-            row.classList.add("justify-content-between");
+      document.getElementById("topImage").src = `${obj.cover}`;
+      document.querySelector(".albumTitle").innerHTML = `${obj.title}`;
+      document.querySelector(".albumArtist").innerHTML = `${obj.artist.name}`;
+      document.querySelector("#artistProfileImage").src = `${obj.artist.picture}`;
 
-            row.innerHTML = `<div class="col-1">
+      const mList = document.getElementById("musicList");
+      const trackList = obj.tracks.data;
+      let i = 1;
+      trackList.forEach((obj) => {
+        const row = document.createElement("div");
+        row.classList.add("row");
+        row.classList.add("text-center");
+        row.classList.add("mb-3");
+        row.classList.add("justify-content-between");
+
+        row.innerHTML = `<div class="col-1">
             <span class="text-light">${i}</span>
           </div>
           <div class="col-6">
@@ -89,16 +83,9 @@ function album() {
           <div class="col-3 text-end">
             <span class="text-white-50">${(obj.duration / 60).toFixed(2)}</span>
           </div>`;
-            mList.append(row);
-            i++;
-          });
-        });
-      fetch(generalAPI)
-        .then((responseObj) => responseObj.json())
-        .then((objGeneral) => {
-          const generalA = objGeneral.data;
-          console.log(generalA);
-        });
+        mList.append(row);
+        i++;
+      });
     });
 }
 
