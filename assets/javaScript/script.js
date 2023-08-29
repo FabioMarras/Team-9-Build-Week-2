@@ -61,6 +61,39 @@ window.onload = function () {
       const albumid = obj.data[0].album.id;
       console.log(albumid);
       const div = document.getElementById("musicList");
+
+      const nameArtist = document.getElementById("nameArtist");
+      const nameArt = document.createElement("div");
+      nameArt.innerHTML = `
+      <h1> ${obj.data[1].artist.name} </h1>
+      `;
+      nameArtist.appendChild(nameArt);
+
+      const songListPopolar = document.getElementById("songListPopolar");
+      for (let i = 0; i < 5; i++) {
+        const listPopolar = document.createElement("div");
+        listPopolar.className = "d-flex mt-3";
+        listPopolar.innerHTML = `
+        <div class="d-flex mt-3">
+        <span class="mx-3 align-self-center">${i + 1}</span>
+        <img class="mx-2" src="${obj.data[i].album.cover}" alt="" width="50px" />
+        <p class="me-3 align-self-center">${obj.data[i].title}</p>
+        <p class="ms-5 align-self-center">${obj.data[i].rank}</p>
+        <p class="ms-5 align-self-center">${obj.data[i].duration}</p>
+        </div>
+        `;
+        songListPopolar.appendChild(listPopolar);
+      }
+
+      const albumArtist = document.getElementById("albumArtist1");
+      const AlbumArt = document.createElement("div");
+      AlbumArt.innerHTML = `
+      <img class="mx-2" src="${obj.data[1].album.cover}" alt="" width="50px" />
+      <p>${obj.data[0].album.title}</p>
+      `;
+
+      albumArtist.appendChild(AlbumArt);
+
       fetch(urlAlbum + albumid, options)
         .then((responseObj) => responseObj.json())
         .then((obj) => {
