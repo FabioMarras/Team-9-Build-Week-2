@@ -112,6 +112,9 @@ function album() {
 
 const generalAPI = "https://striveschool-api.herokuapp.com/api/deezer/search?q={query}";
 
+const eventI = new URLSearchParams(window.location.search).get("artistId");
+const urlArtist = "https://striveschool-api.herokuapp.com/api/deezer/artist/";
+
 function artistPage() {
   const url = "https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem";
   const options = {
