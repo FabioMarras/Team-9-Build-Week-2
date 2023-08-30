@@ -57,10 +57,13 @@
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-default"
               placeholder="What do you wanna listen to?"
+              id="search-input"
             /><button class="btn btn-outline-secondary" type="button" id="button-addon1">Search</button>
           </div>
         </div>
-        <div id="searchResults"></div>
+        <div>
+          <div class="container" id="searchResults"></div>
+        </div>
       </div>
       <div class="mainPage">
         <div id="imgArtist">
@@ -206,6 +209,7 @@
     <script src="assets/javaScript/script.js"></script>
     <script>
       window.onload = artistPage();
+      window.onload = searchbar();
       /* const url = 'https://striveschool-api.herokuapp.com/api/deezer/artist/';
       const artistId = new URLSearchParams(window.location.search).get('artistId');
 
