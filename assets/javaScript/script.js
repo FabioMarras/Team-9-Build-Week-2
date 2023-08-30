@@ -169,28 +169,35 @@ function artistPage() {
 const URL = 'https://striveschool-api.herokuapp.com/api/deezer/search?q=';
 const URL2 = 'https://striveschool-api.herokuapp.com/api/deezer/search?q={query}';
 
+const getData = (searchQuery) => {
+  searchResults.innerHTML = '';
+
+  fetch(URL + searchQuery)
+    .then((resp) => resp.json())
+    .then((artistObjs) => {
+      artistObjs.data.forEach((artistObj) => {
+        searchResults.innerHTML += `<div class="row g-1 my-3 d-flex">
+        <div class="col-md-3"> 
+        <a href="${artistObj.link}"><img src="${artistObj.album.cover_big}" class="img-fluid rounded-start h-100" alt="..."></a>
+        </div> 
+        <div class="col-md-9">
+        <div class="card-body">
+        <h5 class="card-title">Title: ${artistObj.title}</h5>
+        <p class="card-text"><a href="../Artist.html?artistId=${artistObj.artist.id}">Artist: ${artistObj.artist.name}</a></p>
+        <p class="card-text"><a href="../album.html?albumId=${artistObj.album.id}">Album: ${artistObj.album.title}</a></p></div></div></div> `;
+      });
+    });
+};
+
 function searchbar() {
   const searchButton = document.getElementById('button-addon1'); //search button
   const searchResults = document.getElementById('searchResults'); //empty div within search button
+  const searchInput = document.getElementById('search-input');
+  searchInput.addEventListener('input', (event) => {
+    getData(event.target.value);
+  });
   searchButton.addEventListener('click', () => {
-    const searchInput = document.getElementById('search-input');
     const searchQuery = searchInput.value;
-    searchResults.innerHTML = '';
-
-    fetch(URL + searchQuery)
-      .then((resp) => resp.json())
-      .then((artistObjs) => {
-        artistObjs.data.forEach((artistObj) => {
-          searchResults.innerHTML += `<div class="row g-1 my-3 d-flex">
-          <div class="col-md-3"> 
-          <a href="${artistObj.link}"><img src="${artistObj.album.cover_big}" class="img-fluid rounded-start h-100" alt="..."></a>
-          </div> 
-          <div class="col-md-9">
-          <div class="card-body">
-          <h5 class="card-title">Title: ${artistObj.title}</h5>
-          <p class="card-text"><a href="../Artist.html?artistId=${artistObj.artist.id}">Artist: ${artistObj.artist.name}</a></p>
-          <p class="card-text"><a href="../album.html?albumId=${artistObj.album.id}">Album: ${artistObj.album.title}</a></p></div></div></div> `;
-        });
-      });
+    getData(searchQuery);
   });
 }
