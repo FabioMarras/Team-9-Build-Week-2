@@ -121,31 +121,32 @@ function artistPage() {
       "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
     },
   };
-  fetch(url, options)
+  fetch(urlArtist + eventI, options)
     .then((responseObj) => responseObj.json())
     .then((obj) => {
-      const albumid = obj.data[0].album.id;
-      console.log(albumid);
       const div = document.getElementById("musicList");
       const nameArtist = document.getElementById("nameArtist");
       const nameArt = document.createElement("div");
       nameArt.innerHTML = `
-  <h1> ${obj.data[1].artist.name} </h1>
+  <h1> ${obj.name} </h1>
   `;
       nameArtist.appendChild(nameArt);
 
       const songListPopolar = document.getElementById("songListPopolar");
-      for (let i = 0; i < 5; i++) {
-        const time = obj.data[i].duration;
-        const minutes = Math.floor(time / 60);
-        const seconds = Math.floor(time - Math.floor(time / 60) * 60)
-          .toString()
-          .padStart(2, "0");
+      fetch(urlArtist + eventI + "/top?limit=50", options)
+        .then((responseObj) => responseObj.json())
+        .then((obj) => {
+          for (let i = 0; i < 5; i++) {
+            const time = obj.data[i].duration;
+            const minutes = Math.floor(time / 60);
+            const seconds = Math.floor(time - Math.floor(time / 60) * 60)
+              .toString()
+              .padStart(2, "0");
 
-        const duration = minutes + ":" + seconds;
-        const listPopolar = document.createElement("div");
-        listPopolar.className = "d-flex mt-3";
-        listPopolar.innerHTML = `
+            const duration = minutes + ":" + seconds;
+            const listPopolar = document.createElement("div");
+            listPopolar.className = "d-flex mt-3";
+            listPopolar.innerHTML = `
         <div class="d-flex mt-3" style="width: 100%;">
         <span class="mx-3 align-self-center" style="width: 2%;">${i + 1}</span>
         <img class="mx-2" src="${obj.data[i].album.cover}" alt="" width="50px" style="width: 12%;"/>
@@ -154,17 +155,18 @@ function artistPage() {
         <p class="ms-5 align-self-center" style="width: 10%;">Time ${duration}</p>
         </div>
         `;
-        songListPopolar.appendChild(listPopolar);
-      }
+            songListPopolar.appendChild(listPopolar);
+          }
+        });
 
-      const albumArtist = document.getElementById("albumArtist1");
+      /*const albumArtist = document.getElementById("albumArtist1");
       const AlbumArt = document.createElement("div");
       AlbumArt.innerHTML = `
-  <img class="mx-2" src="${obj.data[1].album.cover}" alt="" width="50px" />
-  <p>${obj.data[0].album.title}</p>
+  <img class="mx-2" src="${obj.album.cover}" alt="" width="50px" />
+  <p>${obj.album.title}</p>
   `;
 
-      albumArtist.appendChild(AlbumArt);
+      albumArtist.appendChild(AlbumArt);*/
     });
 }
 
@@ -266,8 +268,8 @@ window.onload = () => {
           searchResults.innerHTML += `  
          
           <div class="row g-1 my-3 d-flex">
-          <div class="col-md-3"> <a href="${artistObj.link}">
-          <img src="${artistObj.album.cover_big}" class="img-fluid rounded-start h-100" alt="..."></a>
+          <div class="col-md-3"> 
+          <a href="${artistObj.link}"><img src="${artistObj.album.cover_big}" class="img-fluid rounded-start h-100" alt="..."></a>
           </div> 
           <div class="col-md-9">
           <div class="card-body">
