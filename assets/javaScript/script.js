@@ -169,7 +169,7 @@ function artistPage() {
 const URL = 'https://striveschool-api.herokuapp.com/api/deezer/search?q=';
 const URL2 = 'https://striveschool-api.herokuapp.com/api/deezer/search?q={query}';
 
-window.onload = () => {
+function searchbar() {
   const searchButton = document.getElementById('button-addon1'); //search button
   const searchResults = document.getElementById('searchResults'); //empty div within search button
   searchButton.addEventListener('click', () => {
@@ -180,13 +180,8 @@ window.onload = () => {
     fetch(URL + searchQuery)
       .then((resp) => resp.json())
       .then((artistObjs) => {
-        //console.log(artistObjs);
         artistObjs.data.forEach((artistObj) => {
-          //console.log(artistObjs.data);
-          //let artistCard = document.createElement('div');
-
-          searchResults.innerHTML += `
-          <div class="row g-1 my-3 d-flex">
+          searchResults.innerHTML += `<div class="row g-1 my-3 d-flex">
           <div class="col-md-3"> 
           <a href="${artistObj.link}"><img src="${artistObj.album.cover_big}" class="img-fluid rounded-start h-100" alt="..."></a>
           </div> 
@@ -194,13 +189,8 @@ window.onload = () => {
           <div class="card-body">
           <h5 class="card-title">Title: ${artistObj.title}</h5>
           <p class="card-text"><a href="../Artist.html?artistId=${artistObj.artist.id}">Artist: ${artistObj.artist.name}</a></p>
-          <p class="card-text"><a href="../album.html?albumId=${artistObj.album.id}">Album: ${artistObj.album.title}</a></p>
-          </div>
-          </div>
-          </div>
-          
-          `;
+          <p class="card-text"><a href="../album.html?albumId=${artistObj.album.id}">Album: ${artistObj.album.title}</a></p></div></div></div> `;
         });
       });
   });
-};
+}

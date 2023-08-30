@@ -27,7 +27,7 @@
     <div class="sidebarLeft p-3">
       <a class="expand-left d-none" onclick="expandLeft(event)"><i class="bi bi-arrows-angle-expand"></i></a>
       <a onclick="collapseLeft(event)" class="collapse-left"><i class="bi bi-x-lg"></i></a>
-      <a href="#"><i class="bi bi-house-door-fill"></i> <span>Home</span></a>
+      <a href="/Homepage.html"><i class="bi bi-house-door-fill"></i> <span>Home</span></a>
       <a href="#" onclick="appearSearch(event)"><i class="bi bi-search"></i> <span>Search</span></a>
       <a href="#"><i class="bi bi-stack"></i> <span>Your library</span></a
       ><br />
@@ -63,10 +63,13 @@
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-default"
               placeholder="What do you wanna listen to?"
+              id="search-input"
             /><button class="btn btn-outline-secondary" type="button" id="button-addon1">Search</button>
           </div>
         </div>
-        <div id="searchResults"></div>
+        <div>
+          <div class="container" id="searchResults"></div>
+        </div>
       </div>
       <div class="mainPage">
         <div class="d-flex" id="mainContainer">
@@ -173,6 +176,7 @@
     <script src="assets/javaScript/script.js"></script>
     <script>
       window.onload = album();
+      window.onload = searchbar();
     </script>
   </body>
 </html>
