@@ -186,36 +186,25 @@ const getData = (searchQuery) => {
         <p class="card-text"><a href="../Artist.html?artistId=${artistObj.artist.id}">Artist: ${artistObj.artist.name}</a></p>
         <p class="card-text"><a href="../album.html?albumId=${artistObj.album.id}">Album: ${artistObj.album.title}</a></p></div></div></div> `;
       });
+      if (searchQuery.trim() !== '') {
+        const playlistItem = document.createElement('div');
+        playlistDiv.classList.add('text-white');
+        playlistItem.textContent = searchQuery;
+        playlistDiv.appendChild(playlistItem);
+        searchInput.value = '';
+      }
     });
 };
 
-function searchbar() {
-  const searchButton = document.getElementById('button-addon1'); //search button
-  const searchResults = document.getElementById('searchResults'); //empty div within search button
+function searchbarAndPlaylist() {
+  const searchButton = document.getElementById('button-addon1');
   const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('searchResults');
+  const playlistDiv = document.getElementById('playlist');
   searchInput.addEventListener('input', (event) => {
     getData(event.target.value);
   });
-  searchButton.addEventListener('click', () => {
-    const searchQuery = searchInput.value;
-    searchResults.innerHTML = '';
-
-    fetch(URL + searchQuery)
-      .then((resp) => resp.json())
-      .then((artistObjs) => {
-        artistObjs.data.forEach((artistObj) => {
-          searchResults.innerHTML += `<div class="row g-1 my-3 d-flex">
-          <div class="col-md-3"> 
-          <a onclick='player(${artistObj.id})'><img src="${artistObj.album.cover_big}" class="img-fluid rounded-start h-100" alt="..."></a>
-          </div> 
-          <div class="col-md-9">
-          <div class="card-body">
-          <h5 class="card-title">Title: ${artistObj.title}</h5>
-          <p class="card-text"><a href="../Artist.html?artistId=${artistObj.artist.id}">Artist: ${artistObj.artist.name}</a></p>
-          <p class="card-text"><a href="../album.html?albumId=${artistObj.album.id}">Album: ${artistObj.album.title}</a></p></div></div></div> `;
-        });
-      });
-  });
+  searchButton.addEventListener('click', () => {});
 }
 
 function player(event) {
@@ -279,3 +268,4 @@ songPause.addEventListener('click', function () {
   songStart.classList.toggle('d-none');
   songPause.classList.toggle('d-none');
 });
+searchbarAndPlaylist();
