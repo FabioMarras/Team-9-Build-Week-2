@@ -190,7 +190,7 @@ function searchbar() {
         artistObjs.data.forEach((artistObj) => {
           searchResults.innerHTML += `<div class="row g-1 my-3 d-flex">
           <div class="col-md-3"> 
-          <a href="${artistObj.link}"><img src="${artistObj.album.cover_big}" class="img-fluid rounded-start h-100" alt="..."></a>
+          <a onclick='player(${artistObj.id})'><img src="${artistObj.album.cover_big}" class="img-fluid rounded-start h-100" alt="..."></a>
           </div> 
           <div class="col-md-9">
           <div class="card-body">
@@ -201,3 +201,65 @@ function searchbar() {
       });
   });
 }
+
+function player(event) {
+  const trackUrl = "https://striveschool-api.herokuapp.com/api/deezer/track/";
+
+  localStorage.setItem("lastSong", event);
+
+  fetch(trackUrl + event)
+    .then((resp) => resp.json())
+    .then((trackObj) => {
+      document.querySelector(".playerIMG").src = `${trackObj.album.cover}`;
+      document.querySelector(".playerName").innerHTML = `${trackObj.title_short}`;
+      document.querySelector(".playerArtist").innerHTML = `${trackObj.artist.name}`;
+
+      const time = trackObj.duration;
+      const minutes = Math.floor(time / 60);
+      const seconds = Math.floor(time - Math.floor(time / 60) * 60)
+        .toString()
+        .padStart(2, "0");
+
+      const duration = minutes + ":" + seconds;
+      localStorage.setItem("songMinutes", minutes);
+      localStorage.setItem("songSeconds", seconds);
+      document.querySelector(".playerDuration").innerHTML = `${duration}`;
+    });
+}
+window.onload = player(localStorage.getItem("lastSong"));
+
+const songStart = document.getElementById("start");
+const songPause = document.getElementById("pause");
+let timer;
+let songtime = 0;
+songStart.addEventListener("click", function () {
+  songStart.classList.toggle("d-none");
+  songPause.classList.toggle("d-none");
+  const songduration = localStorage.getItem("songMinutes") + ":" + localStorage.getItem("songSeconds");
+  const totDuration = Math.floor(localStorage.getItem("songMinutes") * 60 + localStorage.getItem("songSeconds") * 1);
+  timer = setInterval(function () {
+    const minutes = Math.floor(songtime / 60);
+    const seconds = Math.floor(songtime - Math.floor(songtime / 60) * 60)
+      .toString()
+      .padStart(2, "0");
+    const duration = minutes + ":" + seconds;
+    document.querySelector(".playerTimer").innerHTML = duration;
+    const percentage = ((songtime / totDuration) * 100).toFixed(1);
+    console.log(percentage);
+    document.querySelector(".progress-bar").style.width = `${percentage}%`;
+    if (songduration === duration) {
+      clearInterval(timer);
+      songStart.classList.toggle("d-none");
+      songPause.classList.toggle("d-none");
+      songtime = 0;
+      console.log("fin song");
+    } else {
+      songtime++;
+    }
+  }, 1000);
+});
+songPause.addEventListener("click", function () {
+  clearInterval(timer);
+  songStart.classList.toggle("d-none");
+  songPause.classList.toggle("d-none");
+});
