@@ -138,6 +138,9 @@ footer img {
 .albumTitle {
   font-size: 4rem;
 }
+.progress {
+  height: 8px;
+}
 
 @media screen and (max-width: 1200px) {
   .sidebarLeft {
