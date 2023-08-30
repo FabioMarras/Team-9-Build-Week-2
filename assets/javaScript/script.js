@@ -176,11 +176,13 @@ function artistPage() {
 const URL = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
 const URL2 = "https://striveschool-api.herokuapp.com/api/deezer/search?q={query}";
 
-function searchbar() {
-  const searchButton = document.getElementById("button-addon1"); //search button
-  const searchResults = document.getElementById("searchResults"); //empty div within search button
+function searchbarAndPlaylist() {
+  const searchButton = document.getElementById("button-addon1");
+  const searchInput = document.getElementById("search-input");
+  const searchResults = document.getElementById("searchResults");
+  const playlistDiv = document.getElementById("playlist");
+
   searchButton.addEventListener("click", () => {
-    const searchInput = document.getElementById("search-input");
     const searchQuery = searchInput.value;
     searchResults.innerHTML = "";
 
@@ -199,5 +201,15 @@ function searchbar() {
           <p class="card-text"><a href="../album.html?albumId=${artistObj.album.id}">Album: ${artistObj.album.title}</a></p></div></div></div> `;
         });
       });
+
+    if (searchQuery.trim() !== "") {
+      const playlistItem = document.createElement("div");
+      playlistDiv.classList.add("text-white");
+      playlistItem.textContent = searchQuery;
+      playlistDiv.appendChild(playlistItem);
+      searchInput.value = "";
+    }
   });
 }
+
+searchbarAndPlaylist();
