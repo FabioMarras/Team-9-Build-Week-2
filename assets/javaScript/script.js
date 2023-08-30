@@ -132,17 +132,24 @@ function artistPage() {
 
       const songListPopolar = document.getElementById("songListPopolar");
       for (let i = 0; i < 5; i++) {
+        const time = obj.data[i].duration;
+        const minutes = Math.floor(time / 60);
+        const seconds = Math.floor(time - Math.floor(time / 60) * 60)
+          .toString()
+          .padStart(2, "0");
+
+        const duration = minutes + ":" + seconds;
         const listPopolar = document.createElement("div");
         listPopolar.className = "d-flex mt-3";
         listPopolar.innerHTML = `
-    <div class="d-flex mt-3">
-    <span class="mx-3 align-self-center">${i + 1}</span>
-    <img class="mx-2" src="${obj.data[i].album.cover}" alt="" width="50px" />
-    <p class="me-3 align-self-center">${obj.data[i].title}</p>
-    <p class="ms-5 align-self-center">${obj.data[i].rank}</p>
-    <p class="ms-5 align-self-center">${obj.data[i].duration}</p>
-    </div>
-    `;
+        <div class="d-flex mt-3" style="width: 100%;">
+        <span class="mx-3 align-self-center" style="width: 2%;">${i + 1}</span>
+        <img class="mx-2" src="${obj.data[i].album.cover}" alt="" width="50px" style="width: 12%;"/>
+        <p class="me-3 align-self-center" style="width: 25%;">${obj.data[i].title}</p>
+        <p class="ms-5 align-self-center" style="width: 15%;">Riproduzioni ${obj.data[i].rank}</p>
+        <p class="ms-5 align-self-center" style="width: 10%;">Time ${duration}</p>
+        </div>
+        `;
         songListPopolar.appendChild(listPopolar);
       }
 
