@@ -219,7 +219,7 @@ function player(event) {
       const seconds = Math.floor(time - Math.floor(time / 60) * 60)
         .toString()
         .padStart(2, "0");
-
+      songtime = 0;
       const duration = minutes + ":" + seconds;
       localStorage.setItem("songMinutes", minutes);
       localStorage.setItem("songSeconds", seconds);
