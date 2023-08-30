@@ -78,6 +78,13 @@ a {
 a:hover {
   color: aliceblue;
 }
+
+/* buonasera icons */
+
+.buonasera-notification {
+  display: none;
+}
+
 footer {
   bottom: 0;
   position: fixed;
@@ -145,6 +152,35 @@ footer img {
   }
   .sidebarRight {
     display: none;
+  }
+}
+
+/* album cover homepage image */
+
+@media (min-width: 380px) and (max-width: 576px) {
+  .album-homepage-cover {
+    width: 100%;
+  }
+}
+
+/* buonasera icon media query */
+
+@media (max-width: 576px) {
+  .buonasera-notification {
+    display: inline;
+  }
+  .query-size {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) and (orientation: portrait) {
+  .media-query-styling {
+    flex-direction: column;
+  }
+
+  .media-query {
+    margin-top: 10px;
   }
 }
 
