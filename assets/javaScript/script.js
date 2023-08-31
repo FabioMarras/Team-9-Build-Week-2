@@ -198,6 +198,8 @@ function searchbarAndPlaylist() {
   });
 }
 
+const song = document.getElementById("song");
+
 function player(event) {
   const trackUrl = "https://striveschool-api.herokuapp.com/api/deezer/track/";
 
@@ -206,10 +208,11 @@ function player(event) {
   fetch(trackUrl + event)
     .then((resp) => resp.json())
     .then((trackObj) => {
+      console.log(trackObj);
       document.querySelector(".playerIMG").src = `${trackObj.album.cover}`;
       document.querySelector(".playerName").innerHTML = `${trackObj.title_short}`;
       document.querySelector(".playerArtist").innerHTML = `${trackObj.artist.name}`;
-
+      document.getElementById("songSrc").src = `${trackObj.preview}`;
       const time = trackObj.duration;
       const minutes = Math.floor(time / 60);
       const seconds = Math.floor(time - Math.floor(time / 60) * 60)
@@ -245,6 +248,7 @@ songStart.addEventListener("click", function () {
     document.querySelector(".progress-bar").style.width = `${percentage}%`;
     if (songduration === duration) {
       clearInterval(timer);
+      song.play();
       songStart.classList.toggle("d-none");
       songPause.classList.toggle("d-none");
       songtime = 0;
@@ -256,6 +260,7 @@ songStart.addEventListener("click", function () {
 });
 songPause.addEventListener("click", function () {
   clearInterval(timer);
+  song.pause();
   songStart.classList.toggle("d-none");
   songPause.classList.toggle("d-none");
 });
