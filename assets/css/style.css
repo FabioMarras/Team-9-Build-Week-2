@@ -166,7 +166,6 @@ footer img {
 .likeButtonClickNone {
   color: green;
 }
-
 @media screen and (max-width: 1200px) {
   .sidebarLeft,
   .sidebarRight {
@@ -210,6 +209,22 @@ footer img {
     padding-right: 0;
   }
 }
+@media screen and (max-width: 500px) {
+  .albumResponsive {
+    flex-direction: column;
+  }
+  .albumResponsive2 {
+    display: flex;
+  }
+  .mgResponsive {
+    margin-left: 5%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .imgSideBar {
+    display: none;
+  }
+}
 /* buonasera icon media query */
 
 @media (max-width: 576px) {
@@ -242,9 +257,6 @@ footer img {
   }
   .pSidebarright {
     padding-right: 5%;
-  }
-  .albumList {
-    display: none;
   }
   .playlist-List {
     display: block;
