@@ -8,7 +8,7 @@ body {
 .sidebarLeft,
 .sidebarRight {
   height: 100%;
-  width: 20%;
+  width: 20vw;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -58,8 +58,8 @@ hr {
   display: none;
 }
 main {
-  padding-left: 22%;
-  padding-right: 22%;
+  padding-left: 20vw;
+  padding-right: 20vw;
   background: linear-gradient(90deg, #0e0e0e 0%, #2e2e2e 50%);
   color: white;
   padding-top: 20px;
@@ -69,10 +69,10 @@ main {
 }
 
 .pSidebarleft {
-  padding-left: 75px;
+  padding-left: 50px;
 }
 .pSidebarright {
-  padding-right: 75px;
+  padding-right: 50px;
 }
 a {
   text-decoration: none;
@@ -132,11 +132,13 @@ footer img {
   color: white;
   background: #010101;
   background: linear-gradient(180deg, #010101 15%, #464545 60%);
+  padding-top: 0;
 }
 
 #artistCoverImg {
   width: 100%;
   background-size: cover;
+  padding: 20px;
 }
 
 .text-light::placeholder {
@@ -151,6 +153,9 @@ footer img {
 .album-homepage-cover,
 .top-page {
   display: flex;
+}
+.top-page {
+  padding-top: 10px;
 }
 .playlist-List {
   display: none;
@@ -176,8 +181,8 @@ footer img {
     display: none !important;
   }
   main {
-    padding-left: 75px;
-    padding-right: 75px;
+    padding-left: 50px;
+    padding-right: 0px;
   }
   .songDet {
     display: none;
@@ -185,13 +190,25 @@ footer img {
 }
 @media screen and (max-width: 768px) {
   main {
-    padding-left: 75px;
-    padding-right: 5%;
+    padding-left: 50px;
+    padding-right: 0;
   }
 }
-/* album cover homepage image */
+/* buonasera icon media query */
 
-@media (min-width: 380px) and (max-width: 576px) {
+@media (max-width: 576px) {
+  .buonasera-notification {
+    display: inline;
+  }
+  .query-size {
+    width: 100%;
+  }
+  footer i {
+    font-size: 35px;
+  }
+  footer {
+    background: rgba(0, 0, 0, 0.6);
+  }
   .album-homepage-cover,
   .top-page {
     display: none;
@@ -219,30 +236,18 @@ footer img {
   .desktopFooter {
     display: none;
   }
-}
-
-/* buonasera icon media query */
-
-@media (max-width: 576px) {
-  .buonasera-notification {
-    display: inline;
-  }
-  .query-size {
-    width: 100%;
-  }
-  footer i {
-    font-size: 35px;
-  }
-  footer {
-    background: rgba(0, 0, 0, 0.6);
-  }
-}
-
-@media (max-width: 576px) and (orientation: portrait) {
   .media-query-styling {
     flex-direction: column;
   }
-
+  main {
+    padding: 0 20px 120px 20px;
+  }
+  .searchBar {
+    margin-top: 20px;
+  }
+  #artistCoverImg {
+    padding: 20px 20px;
+  }
   .media-query {
     margin-top: 10px;
   }
