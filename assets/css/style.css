@@ -1,9 +1,9 @@
 @import url(/assets/css/circular-font.css);
-@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
 
 body {
   background: linear-gradient(90deg, #0e0e0e 0%, #2e2e2e 50%);
-  font-family: 'Circular';
+  font-family: "Circular";
 }
 .sidebarLeft,
 .sidebarRight {
@@ -54,6 +54,9 @@ hr {
 .collapsed {
   width: 50px;
 }
+.collapsed a span {
+  display: none;
+}
 main {
   padding-left: 22%;
   padding-right: 22%;
@@ -92,6 +95,10 @@ footer {
   z-index: 2;
   color: gray;
 }
+.desktopFooter {
+  height: 100%;
+}
+
 footer img {
   height: 75px;
 }
@@ -141,28 +148,76 @@ footer img {
 .progress {
   height: 8px;
 }
+.album-homepage-cover,
+.top-page {
+  display: flex;
+}
+.playlist-List {
+  display: none;
+}
 
 @media screen and (max-width: 1200px) {
-  .sidebarLeft {
+  .sidebarLeft,
+  .sidebarRight {
+    width: 50px;
+    overflow: hidden;
+  }
+  .sidebarLeft a span {
+    display: none;
+  }
+  .sidebarRight a span {
+    display: none;
+  }
+  .collapse-left,
+  .expand-left {
+    display: none !important;
+  }
+  .sidebarRight {
+    display: none !important;
+  }
+  main {
+    padding-left: 75px;
+    padding-right: 75px;
+  }
+  .songDet {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  main {
+    padding-left: 75px;
+    padding-right: 5%;
+  }
+}
+/* album cover homepage image */
+
+@media (min-width: 380px) and (max-width: 576px) {
+  .album-homepage-cover,
+  .top-page {
+    display: none;
+  }
+  .sidebarLeft,
+  .sidebarRight {
     display: none;
   }
   main {
     padding-left: 5%;
     padding-right: 5%;
   }
-  .songDet {
+  .pSidebarleft {
+    padding-left: 5%;
+  }
+  .pSidebarright {
+    padding-right: 5%;
+  }
+  .albumList {
     display: none;
   }
-  .sidebarRight {
-    display: none;
+  .playlist-List {
+    display: block;
   }
-}
-
-/* album cover homepage image */
-
-@media (min-width: 380px) and (max-width: 576px) {
-  .album-homepage-cover {
-    width: 100%;
+  .desktopFooter {
+    display: none;
   }
 }
 
@@ -175,6 +230,12 @@ footer img {
   .query-size {
     width: 100%;
   }
+  footer i {
+    font-size: 35px;
+  }
+  footer {
+    background: rgba(0, 0, 0, 0.6);
+  }
 }
 
 @media (max-width: 576px) and (orientation: portrait) {
@@ -184,12 +245,5 @@ footer img {
 
   .media-query {
     margin-top: 10px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  main {
-    padding-left: 5%;
-    padding-right: 5%;
   }
 }
