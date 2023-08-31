@@ -66,8 +66,8 @@
         </div>
       </div>
       <div class="mainPage">
-        <div class="" id="artistCoverImg">
-          <div class="d-flex justify-content-between mb-3">
+        <div class="container-fluid" id="artistCoverImg">
+          <div class="top-page justify-content-between mb-3">
             <div>
               <a href="#">
                 <svg
@@ -114,7 +114,7 @@
             </div>
           </div>
           <!--  -->
-          <div class="mt-5">
+          <div class="">
             <svg
               role="img"
               height="24"
@@ -174,37 +174,67 @@
         </div>
       </div>
     </main>
-    <footer class="container-fluid bg-dark">
-      <div class="row mb-3 h-100 flex-nowrap align-items-center">
-        <div class="col d-flex align-items-center">
-          <img class="playerIMG" src="assets/imgs/main/image-1.jpg" />
-          <div class="ps-3">
-            <h5 class="playerName m-0 text-light">Song name?</h5>
-            <p class="playerArtist m-0">auther</p>
-          </div>
-        </div>
-        <div class="col">
-          <div class="row justify-content-center align-items-center fs-4">
-            <a class="col-1"><i class="bi bi-shuffle"></i></a> <a class="col-1"><i class="bi bi-skip-start-fill"></i></a
-            ><a class="col-1 fs-2"><i class="bi bi-play-circle-fill"></i></a
-            ><a class="col-1"> <i class="bi bi-skip-end-fill"></i></a><a class="col-1"> <i class="bi bi-repeat"></i></a>
-          </div>
-          <div class="row justify-content-center align-items-center pt-2">
-            <div class="col-2 text-center playerTimer">0:00</div>
-            <div
-              class="col progress bg-secondary p-0"
-              role="progressbar"
-              aria-label="time"
-              aria-valuenow="25"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            >
-              <div class="progress-bar bg-light" style="width: 25%"></div>
+    <footer class="container-fluid px-0">
+      <audio src="d-none" id="song">
+        <source id="songSrc" src="" type="audio/mp3" />
+      </audio>
+      <div class="container-fluid desktopFooter mb-3 bg-dark">
+        <div class="row h-100 flex-nowrap align-items-center">
+          <div class="col d-flex align-items-center">
+            <img class="playerIMG" src="assets/imgs/main/image-1.jpg" />
+            <div class="ps-3">
+              <h5 class="playerName m-0 text-light">Song name?</h5>
+              <p class="playerArtist m-0">auther</p>
             </div>
-            <div class="col-2 text-center playerDuration">3:22</div>
+          </div>
+          <div class="col">
+            <div class="row justify-content-center align-items-center fs-4">
+              <a class="col-1"><i class="bi bi-shuffle"></i></a>
+              <a class="col-1"><i class="bi bi-skip-start-fill"></i></a>
+              <a class="col-1 fs-2" id="start"><i class="bi bi-play-circle-fill"></i></a>
+              <a class="col-1 fs-2 d-none" id="pause"><i class="bi bi-pause-circle-fill"></i></a>
+              <a class="col-1"> <i class="bi bi-skip-end-fill"></i></a
+              ><a class="col-1"> <i class="bi bi-repeat"></i></a>
+            </div>
+            <div class="row justify-content-center align-items-center pt-2">
+              <div class="col-2 text-center playerTimer">0:00</div>
+              <div
+                class="col progress bg-secondary p-0"
+                role="progressbar"
+                aria-label="time"
+                aria-valuenow="25"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                <div id="progressbar" class="progress-bar bg-light" style="width: 0%"></div>
+              </div>
+              <div class="col-2 text-center playerDuration">3:22</div>
+            </div>
+          </div>
+          <div class="col"></div>
+        </div>
+      </div>
+      <div class="mobileFooter container-fluid h-100">
+        <div class="row text-center h-100 align-items-center">
+          <div class="col">
+            <a href="/Homepage.html"
+              ><div class="row"><i class="bi bi-house-door-fill"></i></div>
+              <span>Home</span></a
+            >
+          </div>
+          <div class="col">
+            <a href="#" onclick="appearSearch(event)"
+              ><div class="row"><i class="bi bi-search"></i></div>
+              <span>Search</span></a
+            >
+          </div>
+          <div class="col">
+            <a href="#"
+              ><div class="row"><i class="bi bi-stack"></i></div>
+              <span>Your library</span></a
+            >
           </div>
         </div>
-        <div class="col"></div>
       </div>
     </footer>
     <script

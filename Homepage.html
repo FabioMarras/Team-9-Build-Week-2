@@ -68,7 +68,7 @@
         </div>
       </div>
       <div class="mainPage">
-        <div class="d-flex justify-content-between mb-3">
+        <div class="justify-content-between mb-3 top-page">
           <div>
             <a href="#">
               <svg
@@ -115,7 +115,7 @@
           </div>
         </div>
         <!-- ALBUM E SONG -->
-        <div id="songDet" class="d-flex p-3 album-homepage-cover media-query-styling">
+        <div id="songDet" class="p-3 album-homepage-cover media-query-styling">
           <div>
             <img src="https://api.deezer.com/album/366045987/image" alt="img song" width="250px" />
           </div>
@@ -184,10 +184,10 @@
           </div>
         </div>
         <!-- Altro di ciò che ti piace -->
-        <div>
+        <div class="albumList">
           <h3>I tuoi album</h3>
           <div class="row mt-4">
-            <div class="col-12 col-md-6 col-lg-4 col-xxl-3 mb-3 justify-content-center">
+            <div class="col-6 col-md-6 col-lg-4 col-xxl-3 mb-3 justify-content-center">
               <div>
                 <a href="http://127.0.0.1:5500/album.html?albumId=595243">
                   <img src="https://api.deezer.com/album/595243/image" alt="" width="200px" class="rounded-3"
@@ -196,7 +196,7 @@
                 <a href="http://127.0.0.1:5500/album.html?albumId=595243"><p class="fs-5">Recovery</p></a>
               </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xxl-3 mb-3">
+            <div class="col-6 col-md-6 col-lg-4 col-xxl-3 mb-3">
               <div>
                 <a href="http://127.0.0.1:5500/album.html?albumId=96636772">
                   <img src="https://api.deezer.com/album/96636772/image" alt="" width="200px" class="rounded-3"
@@ -207,7 +207,7 @@
                 <a href="hhttp://127.0.0.1:5500/album.html?albumId=96636772"><p class="fs-5">Rammstein</p></a>
               </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xxl-3 mb-3">
+            <div class="col-6 col-md-6 col-lg-4 col-xxl-3 mb-3">
               <div>
                 <a href="http://127.0.0.1:5500/album.html?albumId=457947395">
                   <img src="https://api.deezer.com/album/457947395/image" alt="" width="200px" class="rounded-3" />
@@ -218,7 +218,7 @@
                 <a href="http://127.0.0.1:5500/album.html?albumId=457947395"><p class="fs-5">GÉNESIS</p></a>
               </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xxl-3 mb-3">
+            <div class="col-6 col-md-6 col-lg-4 col-xxl-3 mb-3">
               <div>
                 <a href="http://127.0.0.1:5500/album.html?albumId=68346981">
                   <img src="https://api.deezer.com/album/68346981/image" alt="" width="200px" class="rounded-3" />
@@ -229,7 +229,7 @@
                 <a href="http://127.0.0.1:5500/album.html?albumId=68346981"><p class="fs-5">Evolve</p></a>
               </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xxl-3 mb-3">
+            <div class="col-6 col-md-6 col-lg-4 col-xxl-3 mb-3">
               <div>
                 <a href="http://127.0.0.1:5500/album.html?albumId=159826232">
                   <img src="https://api.deezer.com/album/159826232/image" alt="" width="200px" class="rounded-3" />
@@ -240,7 +240,7 @@
                 <a href="http://127.0.0.1:5500/album.html?albumId=159826232"><p class="fs-5">Legends Never Die</p></a>
               </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xxl-3 mb-3">
+            <div class="col-6 col-md-6 col-lg-4 col-xxl-3 mb-3">
               <div>
                 <a href="http://127.0.0.1:5500/album.html?albumId=4203251">
                   <img src="https://api.deezer.com/album/4203251/image" alt="" width="200px" class="rounded-3" />
@@ -253,45 +253,71 @@
             </div>
           </div>
         </div>
+        <div class="playlist-List"></div>
       </div>
     </main>
 
-    <footer class="container-fluid bg-dark">
+    <footer class="container-fluid px-0">
       <audio src="d-none" id="song">
         <source id="songSrc" src="" type="audio/mp3" />
       </audio>
-      <div class="row mb-3 h-100 flex-nowrap align-items-center">
-        <div class="col d-flex align-items-center">
-          <img class="playerIMG" src="assets/imgs/main/image-1.jpg" />
-          <div class="ps-3">
-            <h5 class="playerName m-0 text-light">Song name?</h5>
-            <p class="playerArtist m-0">auther</p>
-          </div>
-        </div>
-        <div class="col">
-          <div class="row justify-content-center align-items-center fs-4">
-            <a class="col-1"><i class="bi bi-shuffle"></i></a>
-            <a class="col-1"><i class="bi bi-skip-start-fill"></i></a>
-            <a class="col-1 fs-2" id="start"><i class="bi bi-play-circle-fill"></i></a>
-            <a class="col-1 fs-2 d-none" id="pause"><i class="bi bi-pause-circle-fill"></i></a>
-            <a class="col-1"> <i class="bi bi-skip-end-fill"></i></a><a class="col-1"> <i class="bi bi-repeat"></i></a>
-          </div>
-          <div class="row justify-content-center align-items-center pt-2">
-            <div class="col-2 text-center playerTimer">0:00</div>
-            <div
-              class="col progress bg-secondary p-0"
-              role="progressbar"
-              aria-label="time"
-              aria-valuenow="25"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            >
-              <div id="progressbar" class="progress-bar bg-light" style="width: 0%"></div>
+      <div class="container-fluid desktopFooter mb-3 bg-dark">
+        <div class="row h-100 flex-nowrap align-items-center">
+          <div class="col d-flex align-items-center">
+            <img class="playerIMG" src="assets/imgs/main/image-1.jpg" />
+            <div class="ps-3">
+              <h5 class="playerName m-0 text-light">Song name?</h5>
+              <p class="playerArtist m-0">auther</p>
             </div>
-            <div class="col-2 text-center playerDuration">3:22</div>
+          </div>
+          <div class="col">
+            <div class="row justify-content-center align-items-center fs-4">
+              <a class="col-1"><i class="bi bi-shuffle"></i></a>
+              <a class="col-1"><i class="bi bi-skip-start-fill"></i></a>
+              <a class="col-1 fs-2" id="start"><i class="bi bi-play-circle-fill"></i></a>
+              <a class="col-1 fs-2 d-none" id="pause"><i class="bi bi-pause-circle-fill"></i></a>
+              <a class="col-1"> <i class="bi bi-skip-end-fill"></i></a
+              ><a class="col-1"> <i class="bi bi-repeat"></i></a>
+            </div>
+            <div class="row justify-content-center align-items-center pt-2">
+              <div class="col-2 text-center playerTimer">0:00</div>
+              <div
+                class="col progress bg-secondary p-0"
+                role="progressbar"
+                aria-label="time"
+                aria-valuenow="25"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                <div id="progressbar" class="progress-bar bg-light" style="width: 0%"></div>
+              </div>
+              <div class="col-2 text-center playerDuration">3:22</div>
+            </div>
+          </div>
+          <div class="col"></div>
+        </div>
+      </div>
+      <div class="mobileFooter container-fluid h-100">
+        <div class="row text-center h-100 align-items-center">
+          <div class="col">
+            <a href="/Homepage.html"
+              ><div class="row"><i class="bi bi-house-door-fill"></i></div>
+              <span>Home</span></a
+            >
+          </div>
+          <div class="col">
+            <a href="#" onclick="appearSearch(event)"
+              ><div class="row"><i class="bi bi-search"></i></div>
+              <span>Search</span></a
+            >
+          </div>
+          <div class="col">
+            <a href="#"
+              ><div class="row"><i class="bi bi-stack"></i></div>
+              <span>Your library</span></a
+            >
           </div>
         </div>
-        <div class="col"></div>
       </div>
     </footer>
     <script
