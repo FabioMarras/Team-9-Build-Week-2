@@ -188,6 +188,16 @@ footer img {
   .songDet {
     display: none;
   }
+  .imgSideBar {
+    width: 30px;
+    height: 30px;
+  }
+  .pSideBar {
+    display: none;
+  }
+  .scopriSideBar {
+    display: none;
+  }
 }
 @media screen and (max-width: 768px) {
   main {

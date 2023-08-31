@@ -231,8 +231,12 @@ function sideBarLeftText() {
         const try2 = document.getElementById("playlist");
         if (obj.title) {
           const try1 = document.createElement("p");
-          try1.classList.add("text-white");
-          try1.innerHTML = ` ${obj.title} `;
+          try1.innerHTML = ` 
+          <div class= "d-flex">
+          <img class= "imgSideBar" src="${obj.picture_small}" alt="" width="35px">
+          <p class = "pSideBar text-white">${obj.title} </p>
+          </div>
+          `;
           try2.appendChild(try1);
         }
       });
