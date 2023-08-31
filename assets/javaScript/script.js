@@ -275,7 +275,7 @@ likeButtonClick.addEventListener('click', () => {
   `;
 
   setTimeout(() => {
-    likeNotification.classList.add('d-none');
+    likeNotification.classList.add('');
   }, 1500);
 });
 

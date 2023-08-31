@@ -29,7 +29,9 @@
       <a href="#"><i class="bi bi-heart-fill"></i> <span>Your favorite songs</span></a>
       <a href="#"><i class="bi bi-bookmark"></i> <span>Your episodes</span></a>
       <hr />
-      <div id="playlist"></div>
+      <div id="playlist">
+        <p class="text-white opacity-75 scopriSideBar">Scopri le seguenti playlist:</p>
+      </div>
     </div>
     <div class="sidebarRight p-3">
       <div class="expand-right" onclick="expandRight(event)" style="display: none">
@@ -37,12 +39,38 @@
       </div>
       <div class="internal justify-content-between" style="display: flex">
         <div>Friend activity</div>
+
         <div>
           <a href=""><i class="bi bi-person-add"></i></a>
           <a class="collapse-right" onclick="collapseRight(event)"><i class="bi bi-x-lg"></i></a>
         </div>
       </div>
-      <div class="friendList"></div>
+      <div class="friendList text-start">
+        <div class="d-flex position-relative">
+          <img class="object-fit-contain rounded-circle" src="./assets/imgs/avatar.png" alt="" width="30px" />
+          <div class="ms-2">
+            <p class="m-0">Bilgen</p>
+            <p class="m-0">Montanelli - Intro</p>
+            <span
+              id="changeImg"
+              class="position-absolute p-1 bg-warning border rounded-circle"
+              style="top: 4px; left: 0; background-color: green !important"
+            ></span>
+          </div>
+        </div>
+        <div class="d-flex position-relative">
+          <img class="object-fit-contain rounded-circle" src="./assets/imgs/avatar.png" alt="" width="30px" />
+          <div class="ms-2">
+            <p class="m-0 opacity-50">Godwin</p>
+            <p class="m-0 opacity-25">Batman - soundtrack</p>
+            <span
+              id="changeImg"
+              class="position-absolute p-1 bg-warning border rounded-circle"
+              style="top: 4px; left: 0"
+            ></span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!--  -->
@@ -186,69 +214,81 @@
         <!-- Altro di ciò che ti piace -->
         <div class="albumList">
           <h3>I tuoi album</h3>
-          <div class="row mt-4">
+          <div class="row mt-4 albumResponsive">
             <div class="col-6 col-md-6 col-lg-4 col-xxl-3 mb-3 justify-content-center">
-              <div>
+              <div class="albumResponsive2">
                 <a href="http://127.0.0.1:5500/album.html?albumId=595243">
                   <img src="https://api.deezer.com/album/595243/image" alt="" width="200px" class="rounded-3"
                 /></a>
-                <a href="http://127.0.0.1:5500/Artist.html?artistId=13"><p class="mt-2 fs-4 text-white">Eminem</p></a>
-                <a href="http://127.0.0.1:5500/album.html?albumId=595243"><p class="fs-5">Recovery</p></a>
+                <div class="mgResponsive">
+                  <a href="http://127.0.0.1:5500/Artist.html?artistId=13"><p class="mt-2 fs-4 text-white">Eminem</p></a>
+                  <a href="http://127.0.0.1:5500/album.html?albumId=595243"><p class="fs-5">Recovery</p></a>
+                </div>
               </div>
             </div>
             <div class="col-6 col-md-6 col-lg-4 col-xxl-3 mb-3">
-              <div>
+              <div class="albumResponsive2">
                 <a href="http://127.0.0.1:5500/album.html?albumId=96636772">
                   <img src="https://api.deezer.com/album/96636772/image" alt="" width="200px" class="rounded-3"
                 /></a>
-                <a href="http://127.0.0.1:5500/Artist.html?artistId=464"
-                  ><p class="mt-2 fs-4 text-white">Rammstein</p></a
-                >
-                <a href="hhttp://127.0.0.1:5500/album.html?albumId=96636772"><p class="fs-5">Rammstein</p></a>
+                <div class="mgResponsive">
+                  <a href="http://127.0.0.1:5500/Artist.html?artistId=464" class="mgResponsive"
+                    ><p class="mt-2 fs-4 text-white">Rammstein</p></a
+                  >
+                  <a href="hhttp://127.0.0.1:5500/album.html?albumId=96636772"><p class="fs-5">Rammstein</p></a>
+                </div>
               </div>
             </div>
             <div class="col-6 col-md-6 col-lg-4 col-xxl-3 mb-3">
-              <div>
+              <div class="albumResponsive2">
                 <a href="http://127.0.0.1:5500/album.html?albumId=457947395">
                   <img src="https://api.deezer.com/album/457947395/image" alt="" width="200px" class="rounded-3" />
                 </a>
-                <a href="http://127.0.0.1:5500/Artist.html?artistId=80365122"
-                  ><p class="mt-2 fs-4 text-white">Peso Pluma</p></a
-                >
-                <a href="http://127.0.0.1:5500/album.html?albumId=457947395"><p class="fs-5">GÉNESIS</p></a>
+                <div class="mgResponsive">
+                  <a href="http://127.0.0.1:5500/Artist.html?artistId=80365122"
+                    ><p class="mt-2 fs-4 text-white">Peso Pluma</p></a
+                  >
+                  <a href="http://127.0.0.1:5500/album.html?albumId=457947395"><p class="fs-5">GÉNESIS</p></a>
+                </div>
               </div>
             </div>
             <div class="col-6 col-md-6 col-lg-4 col-xxl-3 mb-3">
-              <div>
+              <div class="albumResponsive2">
                 <a href="http://127.0.0.1:5500/album.html?albumId=68346981">
                   <img src="https://api.deezer.com/album/68346981/image" alt="" width="200px" class="rounded-3" />
                 </a>
-                <a href="http://127.0.0.1:5500/Artist.html?artistId=416239"
-                  ><p class="mt-2 fs-4 text-white">Imagine Dragons</p></a
-                >
-                <a href="http://127.0.0.1:5500/album.html?albumId=68346981"><p class="fs-5">Evolve</p></a>
+                <div class="mgResponsive">
+                  <a href="http://127.0.0.1:5500/Artist.html?artistId=416239"
+                    ><p class="mt-2 fs-4 text-white">Imagine Dragons</p></a
+                  >
+                  <a href="http://127.0.0.1:5500/album.html?albumId=68346981"><p class="fs-5">Evolve</p></a>
+                </div>
               </div>
             </div>
             <div class="col-6 col-md-6 col-lg-4 col-xxl-3 mb-3">
-              <div>
+              <div class="albumResponsive2">
                 <a href="http://127.0.0.1:5500/album.html?albumId=159826232">
                   <img src="https://api.deezer.com/album/159826232/image" alt="" width="200px" class="rounded-3" />
                 </a>
-                <a href="http://127.0.0.1:5500/Artist.html?artistId=14456487"
-                  ><p class="mt-2 fs-4 text-white">Juice Wrld</p></a
-                >
-                <a href="http://127.0.0.1:5500/album.html?albumId=159826232"><p class="fs-5">Legends Never Die</p></a>
+                <div class="mgResponsive">
+                  <a href="http://127.0.0.1:5500/Artist.html?artistId=14456487"
+                    ><p class="mt-2 fs-4 text-white">Juice Wrld</p></a
+                  >
+                  <a href="http://127.0.0.1:5500/album.html?albumId=159826232"><p class="fs-5">Legends Never Die</p></a>
+                </div>
               </div>
             </div>
             <div class="col-6 col-md-6 col-lg-4 col-xxl-3 mb-3">
-              <div>
+              <div class="albumResponsive2">
                 <a href="http://127.0.0.1:5500/album.html?albumId=4203251">
                   <img src="https://api.deezer.com/album/4203251/image" alt="" width="200px" class="rounded-3" />
                 </a>
-                <a href="http://127.0.0.1:5500/Artist.html?artistId=16565"
-                  ><p class="mt-2 fs-4 text-white">Tazenda</p></a
-                >
-                <a href="http://127.0.0.1:5500/album.html?albumId=4203251"><p class="fs-5">Desvelos tour</p></a>
+                <div class="mgResponsive">
+                  <a href="http://127.0.0.1:5500/Artist.html?artistId=16565"
+                    ><p class="mt-2 fs-4 text-white">Tazenda</p></a
+                  >
+                  <a href="http://127.0.0.1:5500/album.html?albumId=4203251"><p class="fs-5">Desvelos tour</p></a>
+                </div>
               </div>
             </div>
           </div>
@@ -328,6 +368,7 @@
     <script src="assets/javaScript/script.js"></script>
     <script>
       window.onload = searchbarAndPlaylist();
+      window.onload = sideBarLeftText();
     </script>
   </body>
 </html>
