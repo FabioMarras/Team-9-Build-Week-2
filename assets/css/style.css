@@ -142,6 +142,12 @@ footer img {
   height: 8px;
 }
 
+/* like button */
+
+.likeButtonClickNone {
+  color: green;
+}
+
 @media screen and (max-width: 1200px) {
   .sidebarLeft {
     display: none;
