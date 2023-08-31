@@ -63,7 +63,7 @@ main {
   background: linear-gradient(90deg, #0e0e0e 0%, #2e2e2e 50%);
   color: white;
   padding-top: 20px;
-  padding-bottom: 150px;
+  padding-bottom: 100px;
   overflow: auto;
   height: 100vh;
 }
@@ -139,6 +139,7 @@ footer img {
   width: 100%;
   background-size: cover;
   padding: 20px;
+  background-position: center;
 }
 
 .text-light::placeholder {
@@ -159,6 +160,12 @@ footer img {
 }
 .playlist-List {
   display: none;
+}
+.searchBar {
+  margin: 20px;
+}
+#searchResults .row {
+  height: 20vw;
 }
 
 @media screen and (max-width: 1200px) {

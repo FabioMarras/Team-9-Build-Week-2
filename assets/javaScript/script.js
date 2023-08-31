@@ -169,10 +169,10 @@ const getData = (searchQuery) => {
     .then((artistObjs) => {
       artistObjs.data.forEach((artistObj) => {
         searchResults.innerHTML += `<div class="row g-1 my-3 d-flex">
-        <div class="col-md-3"> 
-        <a onclick="player(${artistObj.id})"><img src="${artistObj.album.cover_big}" class="img-fluid rounded-start h-100" alt="..."></a>
+        <div class="col-3"> 
+        <a onclick="player(${artistObj.id})"><img src="${artistObj.album.cover_big}" class="img-fluid rounded-start h-100 w-100" alt="..."></a>
         </div> 
-        <div class="col-md-9">
+        <div class="col-9">
         <div class="card-body">
         <h5 class="card-title">Title: ${artistObj.title}</h5>
         <p class="card-text"><a href="../Artist.html?artistId=${artistObj.artist.id}">Artist: ${artistObj.artist.name}</a></p>
@@ -204,7 +204,7 @@ function player(event) {
       document.querySelector(".playerIMG").src = `${trackObj.album.cover}`;
       document.querySelector(".playerName").innerHTML = `${trackObj.title_short}`;
       document.querySelector(".playerArtist").innerHTML = `${trackObj.artist.name}`;
-      document.getElementById("songSrc").src = `${trackObj.preview}`;
+      song.src = `${trackObj.preview}`;
       const time = trackObj.duration;
       const minutes = Math.floor(time / 60);
       const seconds = Math.floor(time - Math.floor(time / 60) * 60)
@@ -224,6 +224,7 @@ const songPause = document.getElementById("pause");
 let timer;
 let songtime = 0;
 songStart.addEventListener("click", function () {
+  song.play();
   songStart.classList.toggle("d-none");
   songPause.classList.toggle("d-none");
   const songduration = localStorage.getItem("songMinutes") + ":" + localStorage.getItem("songSeconds");
@@ -236,11 +237,9 @@ songStart.addEventListener("click", function () {
     const duration = minutes + ":" + seconds;
     document.querySelector(".playerTimer").innerHTML = duration;
     const percentage = ((songtime / totDuration) * 100).toFixed(1);
-    console.log(percentage);
     document.querySelector(".progress-bar").style.width = `${percentage}%`;
     if (songduration === duration) {
       clearInterval(timer);
-      song.play();
       songStart.classList.toggle("d-none");
       songPause.classList.toggle("d-none");
       songtime = 0;
@@ -256,3 +255,43 @@ songPause.addEventListener("click", function () {
   songStart.classList.toggle("d-none");
   songPause.classList.toggle("d-none");
 });
+
+const volume = document.getElementById("audioVolume");
+const volumeMax = document.getElementById("audioVolume-con");
+let drag = false;
+
+volumeMax.addEventListener("mousedown", (e) => {
+  drag = true;
+  updateVol();
+});
+document.addEventListener("mousemove", function (ev) {
+  if (drag) {
+    updateBar(ev.clientX);
+  }
+});
+document.addEventListener("mouseup", function (ev) {
+  drag = false;
+});
+var updateBar = function (x, vol) {
+  var volume = e;
+  var percentage;
+  //if only volume have specificed
+  //then direct update volume
+  if (vol) {
+    percentage = vol * 100;
+  } else {
+    var position = x - volume.offsetLeft;
+    percentage = (100 * position) / volume.clientWidth;
+  }
+
+  if (percentage > 100) {
+    percentage = 100;
+  }
+  if (percentage < 0) {
+    percentage = 0;
+  }
+
+  //update volume bar and video volume
+  eInner.style.width = percentage + "%";
+  audio.volume = percentage / 100;
+};
