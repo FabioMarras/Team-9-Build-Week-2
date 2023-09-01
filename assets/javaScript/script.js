@@ -260,38 +260,37 @@ songPause.addEventListener("click", function () {
 
 const likeButtonClick = document.getElementById("likeButtonClick");
 const likeButtonClickNone = document.getElementById("likeButtonClickNone");
-//const likeNotification = document.getElementById('likeNotification');
-//console.log(likeButtonClick.target);
-//console.log(likeButtonClickNone.target);
 
-likeButtonClick.addEventListener("click", () => {
-  const likeNotification = document.getElementById("likeNotification");
-  likeButtonClick.classList.toggle("d-none");
-  likeButtonClickNone.classList.remove("d-none");
-  likeButtonClickNone.style.color = "green";
+if (likeButtonClick === null) {
+} else {
+  likeButtonClick.addEventListener("click", () => {
+    const likeNotification = document.getElementById("likeNotification");
+    likeButtonClick.classList.toggle("d-none");
+    likeButtonClickNone.classList.remove("d-none");
+    likeButtonClickNone.style.color = "green";
 
-  likeNotification.innerHTML = ` <button type="button" class="btn btn-primary">Saved to <strong>Your Library</strong></button>
+    likeNotification.innerHTML = ` <button type="button" class="btn btn-primary">Saved to <strong>Your Library</strong></button>
   `;
 
-  setTimeout(() => {
-    likeNotification.classList.add("");
-  }, 1500);
-});
+    setTimeout(() => {
+      likeNotification.classList.add("");
+    }, 1500);
+  });
 
-likeButtonClickNone.addEventListener("click", () => {
-  const likeNotification = document.getElementById("likeNotification");
-  likeButtonClick.classList.toggle("d-none");
-  likeButtonClickNone.classList.toggle("d-none");
-  //likeNotification.classList.add('d-none');
+  likeButtonClickNone.addEventListener("click", () => {
+    const likeNotification = document.getElementById("likeNotification");
+    likeButtonClick.classList.toggle("d-none");
+    likeButtonClickNone.classList.toggle("d-none");
+    //likeNotification.classList.add('d-none');
 
-  likeNotification.innerHTML = `
+    likeNotification.innerHTML = `
   <button type="button" class="btn btn-primary">Removed from <strong>Your Library</strong></button>`;
 
-  setTimeout(() => {
-    likeNotification.classList.add("d-none");
-  }, 1500);
-});
-
+    setTimeout(() => {
+      likeNotification.classList.add("d-none");
+    }, 1500);
+  });
+}
 const volume = document.getElementById("audioVolume");
 const volumeMax = document.getElementById("audioVolume-con");
 let drag = false;
