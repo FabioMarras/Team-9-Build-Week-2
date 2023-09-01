@@ -156,6 +156,17 @@ function artistPage() {
             `;
             songListPopolar.appendChild(listPopolar);
           }
+          const Like1 = document.getElementById("songLike");
+          const Like2 = document.createElement("div");
+          Like2.classList.add("d-flex");
+          Like2.innerHTML = `
+      <img class="rounded-circle" src="${obj.data[0].album.cover}" alt="" width="20%">
+              <div class="d-flex flex-column justify-content-evenly ms-1">
+                <div>Hai messo Mi piace a 10 brani</div>
+                <div>Di ${obj.data[0].contributors[0].name}</div>
+              </div>
+      `;
+          Like1.appendChild(Like2);
         });
     });
 }
