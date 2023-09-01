@@ -19,12 +19,14 @@ function collapseLeft(event) {
   document.querySelector(".expand-left").classList.toggle("d-none");
   document.querySelector(".collapse-left").classList.toggle("d-none");
   document.getElementById("main").classList.toggle("pSidebarleft");
+  document.getElementById("playlist").classList.add("d-none");
 }
 function expandLeft(event) {
   document.querySelector(".expand-left").classList.toggle("d-none");
   document.querySelector(".collapse-left").classList.toggle("d-none");
   document.querySelector(".sidebarLeft").classList.toggle("collapsed");
   document.getElementById("main").classList.toggle("pSidebarleft");
+  document.getElementById("playlist").classList.remove("d-none");
 }
 function appearSearch(event) {
   document.querySelector(".searchBar").classList.toggle("d-none");
@@ -190,7 +192,46 @@ function searchbarAndPlaylist() {
   });
 }
 
-const song = document.getElementById("song");
+function sideBarLeftText() {
+  const textUrl = "https://deezerdevs-deezer.p.rapidapi.com/playlist/";
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": "ed8257b4dbmsh87a10cf4523a33ap1b6a9fjsnfdb7824dd27d",
+      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+    },
+  };
+
+  function getRandomNumber() {
+    return Math.floor(Math.random() * 300);
+  }
+
+  const randomNumbers = [];
+  for (let i = 0; i < 10; i++) {
+    randomNumbers.push(getRandomNumber());
+  }
+  console.log("Numeri random per playlist " + randomNumbers);
+
+  for (let i = 0; i < 10; i++) {
+    const currentNumber = randomNumbers[i];
+    fetch(textUrl + currentNumber, options)
+      .then((responseObj) => responseObj.json())
+      .then((obj) => {
+        const try2 = document.getElementById("playlist");
+        if (obj.title) {
+          const try1 = document.createElement("p");
+          try1.innerHTML = ` 
+          <div class= "d-flex">
+          <img class= "imgSideBar" src="${obj.picture_small}" alt="" width="35px">
+          <p class = "pSideBar text-white">${obj.title} </p>
+          </div>
+          `;
+          try2.appendChild(try1);
+        }
+      });
+  }
+}
+
 function sideBarLeftText() {
   const textUrl = "https://deezerdevs-deezer.p.rapidapi.com/playlist/";
   const options = {
