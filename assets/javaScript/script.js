@@ -42,13 +42,12 @@ const options = {
 };
 
 const queryString = window.location.search;
-console.log(queryString);
+
 const urlParams = new URLSearchParams(queryString);
-console.log(urlParams);
+
 const urlAlbum = "https://deezerdevs-deezer.p.rapidapi.com/album/";
 const albumId = urlParams.get("albumId");
 
-console.log(albumId);
 const url = "https://deezerdevs-deezer.p.rapidapi.com/search?q=103248";
 function album() {
   fetch(urlAlbum + albumId, options)
@@ -261,7 +260,6 @@ function sideBarLeftText() {
   for (let i = 0; i < 10; i++) {
     randomNumbers.push(getRandomNumber());
   }
-  console.log("Numeri random per playlist " + randomNumbers);
 
   for (let i = 0; i < 10; i++) {
     const currentNumber = randomNumbers[i];
@@ -291,7 +289,6 @@ function player(event) {
   fetch(trackUrl + event)
     .then((resp) => resp.json())
     .then((trackObj) => {
-      console.log(trackObj);
       document.querySelector(".playerIMG").src = `${trackObj.album.cover}`;
       document.querySelector(".playerName").innerHTML = `${trackObj.title_short}`;
       document.querySelector(".playerArtist").innerHTML = `${trackObj.artist.name}`;
@@ -334,7 +331,6 @@ songStart.addEventListener("click", function () {
       songStart.classList.toggle("d-none");
       songPause.classList.toggle("d-none");
       songtime = 0;
-      console.log("fin song");
     } else {
       songtime++;
     }
@@ -420,5 +416,4 @@ var updateVol = function (x, vol) {
   //update volume bar and video volume
   volume.style.width = percentage + "%";
   song.volume = percentage / 100;
-  console.log(song.volume);
 };
