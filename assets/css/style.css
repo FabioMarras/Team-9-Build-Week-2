@@ -198,8 +198,18 @@ footer img {
 .homeBody {
   padding: 0 20px;
 }
+.optionLine {
+  font-size: 40px;
+}
+.albumImg {
+  height: 18vw;
+}
 
 @media screen and (max-width: 1200px) {
+  .albumImg {
+    height: 25vw;
+  }
+
   .sidebarLeft,
   .sidebarRight {
     width: 50px;
@@ -317,5 +327,11 @@ footer img {
   }
   .bodyArtist {
     padding: 0 0 120px 0;
+  }
+  .albumInfo span:not(.albumArtist, .releaseDate) {
+    display: none;
+  }
+  .optionLine {
+    font-size: 10vw;
   }
 }
