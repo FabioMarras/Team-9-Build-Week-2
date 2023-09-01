@@ -19,12 +19,14 @@ function collapseLeft(event) {
   document.querySelector(".expand-left").classList.toggle("d-none");
   document.querySelector(".collapse-left").classList.toggle("d-none");
   document.getElementById("main").classList.toggle("pSidebarleft");
+  document.getElementById("playlist").classList.add("d-none");
 }
 function expandLeft(event) {
   document.querySelector(".expand-left").classList.toggle("d-none");
   document.querySelector(".collapse-left").classList.toggle("d-none");
   document.querySelector(".sidebarLeft").classList.toggle("collapsed");
   document.getElementById("main").classList.toggle("pSidebarleft");
+  document.getElementById("playlist").classList.remove("d-none");
 }
 function appearSearch(event) {
   document.querySelector(".searchBar").classList.toggle("d-none");
