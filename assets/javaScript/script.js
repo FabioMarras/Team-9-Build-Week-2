@@ -299,64 +299,63 @@ songPause.addEventListener("click", function () {
 
 const likeButtonClick = document.getElementById("likeButtonClick");
 const likeButtonClickNone = document.getElementById("likeButtonClickNone");
-//const likeNotification = document.getElementById('likeNotification');
-//console.log(likeButtonClick.target);
-//console.log(likeButtonClickNone.target);
 
-likeButtonClick.addEventListener("click", () => {
-  const likeNotification = document.getElementById("likeNotification");
-  likeButtonClick.classList.toggle("d-none");
-  likeButtonClickNone.classList.remove("d-none");
-  likeButtonClickNone.style.color = "green";
+if (likeButtonClick === null) {
+} else {
+  likeButtonClick.addEventListener("click", () => {
+    const likeNotification = document.getElementById("likeNotification");
+    likeButtonClick.classList.toggle("d-none");
+    likeButtonClickNone.classList.remove("d-none");
+    likeButtonClickNone.style.color = "green";
 
-  likeNotification.innerHTML = ` <button type="button" class="btn btn-primary">Saved to <strong>Your Library</strong></button>
+    likeNotification.innerHTML = ` <button type="button" class="btn btn-primary">Saved to <strong>Your Library</strong></button>
   `;
 
-  setTimeout(() => {
-    likeNotification.classList.add("");
-  }, 1500);
-});
+    setTimeout(() => {
+      likeNotification.classList.add("");
+    }, 1500);
+  });
 
-likeButtonClickNone.addEventListener("click", () => {
-  const likeNotification = document.getElementById("likeNotification");
-  likeButtonClick.classList.toggle("d-none");
-  likeButtonClickNone.classList.toggle("d-none");
-  //likeNotification.classList.add('d-none');
+  likeButtonClickNone.addEventListener("click", () => {
+    const likeNotification = document.getElementById("likeNotification");
+    likeButtonClick.classList.toggle("d-none");
+    likeButtonClickNone.classList.toggle("d-none");
+    //likeNotification.classList.add('d-none');
 
-  likeNotification.innerHTML = `
+    likeNotification.innerHTML = `
   <button type="button" class="btn btn-primary">Removed from <strong>Your Library</strong></button>`;
 
-  setTimeout(() => {
-    likeNotification.classList.add("d-none");
-  }, 1500);
-});
-
+    setTimeout(() => {
+      likeNotification.classList.add("d-none");
+    }, 1500);
+  });
+}
 const volume = document.getElementById("audioVolume");
 const volumeMax = document.getElementById("audioVolume-con");
 let drag = false;
 
-volumeMax.addEventListener("mousedown", (e) => {
+volumeMax.addEventListener("mousedown", (ev) => {
   drag = true;
-  updateVol();
+  updateVol(ev.clientX);
 });
 document.addEventListener("mousemove", function (ev) {
   if (drag) {
-    updateBar(ev.clientX);
+    updateVol(ev.clientX);
   }
 });
 document.addEventListener("mouseup", function (ev) {
   drag = false;
 });
-var updateBar = function (x, vol) {
-  var volume = e;
-  var percentage;
+var updateVol = function (x, vol) {
+  let volumeCon = volumeMax;
+  let percentage;
   //if only volume have specificed
   //then direct update volume
   if (vol) {
     percentage = vol * 100;
   } else {
-    var position = x - volume.offsetLeft;
-    percentage = (100 * position) / volume.clientWidth;
+    let position = x - volumeCon.offsetLeft;
+    percentage = (100 * position) / volumeCon.clientWidth;
   }
 
   if (percentage > 100) {
@@ -367,6 +366,7 @@ var updateBar = function (x, vol) {
   }
 
   //update volume bar and video volume
-  eInner.style.width = percentage + "%";
-  audio.volume = percentage / 100;
+  volume.style.width = percentage + "%";
+  song.volume = percentage / 100;
+  console.log(song.volume);
 };

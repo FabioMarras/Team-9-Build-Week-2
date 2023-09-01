@@ -1,9 +1,9 @@
 @import url(/assets/css/circular-font.css);
-@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
 
 body {
   background: linear-gradient(90deg, #0e0e0e 0%, #2e2e2e 50%);
-  font-family: 'Circular';
+  font-family: "Circular";
 }
 .sidebarLeft,
 .sidebarRight {
@@ -14,7 +14,7 @@ body {
   top: 0;
   background: black;
 
-  overflow-x: hidden;
+  overflow-x: auto;
   padding-top: 20px;
 }
 .sidebarLeft {
@@ -195,11 +195,15 @@ footer img {
   display: none;
 }
 
+.homeBody {
+  padding: 0 20px;
+}
+
 @media screen and (max-width: 1200px) {
   .sidebarLeft,
   .sidebarRight {
     width: 50px;
-    overflow: hidden;
+    overflow: auto;
   }
   .sidebarLeft a span {
     display: none;
@@ -260,6 +264,9 @@ footer img {
   .buonasera-notification {
     display: inline;
   }
+  .albumImg {
+    height: 55vw;
+  }
   .query-size {
     width: 100%;
   }
@@ -307,5 +314,8 @@ footer img {
   }
   .media-query {
     margin-top: 10px;
+  }
+  .bodyArtist {
+    padding: 0 0 120px 0;
   }
 }
