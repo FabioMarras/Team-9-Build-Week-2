@@ -148,7 +148,7 @@ function artistPage() {
             listPopolar.innerHTML = `
             <div class="d-flex mt-3" style="width: 100%;">
             <span class="mx-3 align-self-center" style="width: 2%;">${i + 1}</span>
-            <img class="mx-2" src="${obj.data[i].album.cover}" alt="" width="50px" style="width: 12%;"/>
+            <img class="mx-2" src="${obj.data[i].album.cover}" alt="" width="60px" />
             <p class="me-3 align-self-center" style="width: 25%;">${obj.data[i].title}</p>
             <p class="ms-5 align-self-center" style="width: 15%;">Riproduzioni ${obj.data[i].rank}</p>
             <p class="ms-5 align-self-center" style="width: 10%;">Time ${duration}</p>
